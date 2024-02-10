@@ -36,7 +36,8 @@ export const Flashcards: React.FC = () => {
         setEditModal(true);
     };
 
-    const handleDeleteClick = async (flashcardId: string): Promise<void> => {
+    const handleDeleteClick = async (event: React.MouseEvent,flashcardId: string): Promise<void> => {
+        event.stopPropagation();
         if (deckId) {
             deleteFlashcard(deckId, flashcardId);
         }
@@ -97,7 +98,7 @@ export const Flashcards: React.FC = () => {
                             />
                             <div className="flex items-center">
                                 <svg
-                                    onClick={() => handleDeleteClick(fc.id)}
+                                    onClick={(event) => handleDeleteClick(event, fc.id)}
                                     className="w-6 h-6 text-white dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-500"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
