@@ -1,8 +1,8 @@
 import React, {useState, ChangeEvent} from 'react';
 import {useDeck} from '../context/deck-context';
-import { PrimaryButton } from './PrimaryButton';
-import { SecondaryButton } from './SecondaryButton';
-import { DeckModal } from './DeckModal';
+import {PrimaryButton} from './PrimaryButton';
+import {SecondaryButton} from './SecondaryButton';
+import {Modal} from './Modal';
 
 export const CreateDeck: React.FC = () => {
     const [openModal, setOpenModal] = useState<Boolean>(false);
@@ -29,14 +29,19 @@ export const CreateDeck: React.FC = () => {
     return (
         <div className="mb-5">
             <div className="flex justify-between items-center">
-                <p className="tracking-wide text-gray-300 md:text-lg dark:text-gray-300">Decks</p>
-                <PrimaryButton content={'Create Deck'} onClick={(): void => setOpenModal(true)}/>
+                <p className="tracking-wide text-gray-300 md:text-lg dark:text-gray-300">
+                    Decks
+                </p>
+                <PrimaryButton
+                    content={'Create Deck'}
+                    onClick={(): void => setOpenModal(true)}
+                />
             </div>
             {openModal == true && (
-                <DeckModal 
+                <Modal
                     title="Name your new deck"
                     onClose={() => setOpenModal(false)}
-                    body={(
+                    body={
                         <div className="mb-5">
                             <label
                                 htmlFor="deckName"
@@ -63,11 +68,14 @@ export const CreateDeck: React.FC = () => {
                                 placeholder="Name"
                                 required
                             />
-                        </div>     
-                    )}
-                    footer={(
-                        <SecondaryButton content={'Save'} onClick={handleNextButtonClick} />
-                    )}
+                        </div>
+                    }
+                    footer={
+                        <SecondaryButton
+                            content={'Save'}
+                            onClick={handleNextButtonClick}
+                        />
+                    }
                 />
             )}
         </div>

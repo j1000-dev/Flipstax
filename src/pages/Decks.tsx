@@ -1,9 +1,9 @@
 import React, {useState, ChangeEvent} from 'react';
 import {useDeck} from '../context/deck-context';
 import {useNavigate} from 'react-router-dom';
-import { DeckModal } from '../components/DeckModal';
-import { SecondaryButton } from '../components/SecondaryButton';
-import { PrimaryButton } from '../components/PrimaryButton';
+import {Modal} from '../components/Modal';
+import {SecondaryButton} from '../components/SecondaryButton';
+import {PrimaryButton} from '../components/PrimaryButton';
 
 export const Decks: React.FC = () => {
     const {decks} = useDeck();
@@ -15,11 +15,13 @@ export const Decks: React.FC = () => {
     const {editDeck, deleteDeck} = useDeck();
 
     const handleDeckClick = (
+        deckName: string,
         deckId: string,
         type: string,
         event: React.MouseEvent
     ): void => {
         event.stopPropagation(); //Stop the svg click from propagating to the deck div
+        setDeckName(deckName);
         switch (type) {
             case 'edit':
                 setEditModal(true);
@@ -64,11 +66,13 @@ export const Decks: React.FC = () => {
         <div className="overflow-y-auto" style={{height: '80%'}}>
             {decks.map(deck => (
                 <div
-                    className="cursor-pointer py-3 mx-1"
+                    className="cursor-pointer py-3 mx-2"
                     key={deck.id}
-                    onClick={event => handleDeckClick(deck.id, 'deck', event)}
-                >
-                    <div className="
+                    onClick={event =>
+                        handleDeckClick(deck.name, deck.id, 'deck', event)
+                    }>
+                    <div
+                        className="
                         text-white 
                         block rounded-lg shadow
                         max-w-sm p-4 
@@ -78,10 +82,19 @@ export const Decks: React.FC = () => {
                             {deck.name}
                         </p>
                         <div className="flex items-center justify-between">
-                            <p className="text-gray-400 dark:text-gray-400">{deck.flashcardCount} flashcards</p>
+                            <p className="text-gray-400 dark:text-gray-400">
+                                {deck.flashcardCount} flashcards
+                            </p>
                             <div className="flex items-center justify-between">
                                 <svg
-                                    onClick={event => handleDeckClick(deck.id, 'delete', event)}
+                                    onClick={event =>
+                                        handleDeckClick(
+                                            deck.name,
+                                            deck.id,
+                                            'delete',
+                                            event
+                                        )
+                                    }
                                     className="w-6 h-6 text-white dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-400"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -96,7 +109,14 @@ export const Decks: React.FC = () => {
                                     />
                                 </svg>
                                 <svg
-                                    onClick={event => handleDeckClick(deck.id, 'edit', event)}
+                                    onClick={event =>
+                                        handleDeckClick(
+                                            deck.name,
+                                            deck.id,
+                                            'edit',
+                                            event
+                                        )
+                                    }
                                     className="ml-2 w-7 h-7 text-white dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-400"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -116,10 +136,10 @@ export const Decks: React.FC = () => {
                 </div>
             ))}
             {editModal == true && (
-                <DeckModal 
+                <Modal
                     title="Edit your deck"
                     onClose={() => setEditModal(false)}
-                    body={(
+                    body={
                         <div className="mb-5">
                             <label
                                 htmlFor="email"
@@ -141,24 +161,37 @@ export const Decks: React.FC = () => {
                                 required
                             />
                         </div>
-                    )}
-                    footer={(<SecondaryButton content={'Save'} onClick={handleEdit} />)}
+                    }
+                    footer={
+                        <SecondaryButton
+                            content={'Save'}
+                            onClick={handleEdit}
+                        />
+                    }
                 />
             )}
             {deleteModal == true && (
-                <DeckModal 
+                <Modal
                     title="Delete your deck"
                     onClose={() => setDeleteModal(false)}
-                    body={(
+                    body={
                         <p className="text-base leading-relaxed text-gray-400 dark:text-gray-400">
                             Are you sure you want to delete this deck?
                         </p>
-                    )}
-                    footer={(<>
-                        <PrimaryButton content="Yes" onClick={handleDelete} /><span className="mx-1"></span>
-                        <SecondaryButton content="Cancel" onClick={() => setDeleteModal(false)} />
-                    </>
-                    )}
+                    }
+                    footer={
+                        <>
+                            <PrimaryButton
+                                content="Yes"
+                                onClick={handleDelete}
+                            />
+                            <span className="mx-1"></span>
+                            <SecondaryButton
+                                content="Cancel"
+                                onClick={() => setDeleteModal(false)}
+                            />
+                        </>
+                    }
                 />
             )}
         </div>

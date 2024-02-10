@@ -1,12 +1,14 @@
-
-import React, { ReactNode, MouseEvent } from 'react'
+import React, {ReactNode, MouseEvent} from 'react';
 
 interface PrimaryButtonProps {
-    content: ReactNode,
+    content: ReactNode;
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const PrimaryButton: React.FC<PrimaryButtonProps> = ({content, onClick }) => {
+export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
+    content,
+    onClick
+}) => {
     return (
         <button
             type="submit"
@@ -17,10 +19,8 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({content, onClick })
             font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 
             bg-green-300 hover:bg-green-400 
             dark:bg-green-300 dark:hover:bg-green-400 
-            dark:focus:ring-green-800"
-        >
+            dark:focus:ring-green-800">
             {content}
         </button>
-    )
-
-}
+    );
+};

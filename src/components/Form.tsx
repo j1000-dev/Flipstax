@@ -197,7 +197,8 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                             </button>
                             <Link
                                 to={formType == 'login' ? '/signup' : '/login'}>
-                                <button className="
+                                <button
+                                    className="
                                     text-black 
                                     bg-blue-400 
                                     hover:bg-blue-500 

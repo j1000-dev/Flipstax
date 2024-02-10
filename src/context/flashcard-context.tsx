@@ -54,7 +54,11 @@ export function FlashcardProvider({
                         updated_at: flashcardDoc.data().updated_at
                     })
                 );
-                flashcardsData.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
+                flashcardsData.sort(
+                    (a, b) =>
+                        new Date(b.created_at).getTime() -
+                        new Date(a.created_at).getTime()
+                );
                 setFlashcards(flashcardsData);
             });
 

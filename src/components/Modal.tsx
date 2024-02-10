@@ -1,13 +1,13 @@
 import React, {ReactNode, MouseEvent} from 'react';
 
-interface DeckModalProps {
+interface ModalProps {
     title: string;
     body: ReactNode;
     footer: ReactNode;
     onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const DeckModal: React.FC<DeckModalProps> = ({title, body, footer, onClose}) => {
+export const Modal: React.FC<ModalProps> = ({title, body, footer, onClose}) => {
     return (
         <div
             id="default-modal"
@@ -45,9 +45,7 @@ export const DeckModal: React.FC<DeckModalProps> = ({title, body, footer, onClos
                         </button>
                     </div>
                     {/* Modal body */}
-                    <div className="p-4 md:p-5 space-y-4">
-                        {body}
-                    </div>
+                    <div className="p-4 md:p-5 space-y-4">{body}</div>
                     {/* Modal footer */}
                     <div className="flex justify-end items-center p-4 md:p-5 border-t border-gray-600 rounded-b dark:border-gray-600">
                         {footer}
@@ -55,5 +53,5 @@ export const DeckModal: React.FC<DeckModalProps> = ({title, body, footer, onClos
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

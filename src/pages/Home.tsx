@@ -10,7 +10,7 @@ import {FlashcardProvider} from '../context/flashcard-context';
 import {Flashcards} from './Flashcards';
 import {usePractice} from '../context/practice-context';
 import {Practice} from './Practice';
-import { PrimaryButton } from '../components/PrimaryButton';
+import {PrimaryButton} from '../components/PrimaryButton';
 
 const Home: React.FC = () => {
     const {signOut} = useContext(AuthContext);

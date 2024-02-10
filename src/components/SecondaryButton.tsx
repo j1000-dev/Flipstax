@@ -1,12 +1,14 @@
-
-import React, { ReactNode, MouseEvent } from 'react'
+import React, {ReactNode, MouseEvent} from 'react';
 
 interface SecondaryButtonProps {
-    content: ReactNode,
+    content: ReactNode;
     onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const SecondaryButton: React.FC<SecondaryButtonProps> = ({content, onClick }) => {
+export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
+    content,
+    onClick
+}) => {
     return (
         <button
             type="submit"
@@ -21,10 +23,8 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({content, onClic
             rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center 
             dark:bg-blue-400 
             dark:hover:bg-blue-500 
-            dark:focus:ring-blue-600"
-        >
+            dark:focus:ring-blue-600">
             {content}
         </button>
-    )
-
-}
+    );
+};
