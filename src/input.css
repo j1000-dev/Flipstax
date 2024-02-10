@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+    background-color: #111827;
+}
+
+.flip {
+    transition: transform 0.5s;
+}
+
+.flip.flip-card {
+    transform: rotateY(180deg);
+}
+
+.flip-card-back {
+    transform: rotateY(-180deg);
+}
