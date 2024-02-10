@@ -12,7 +12,7 @@ import {usePractice} from '../context/practice-context';
 import {Practice} from './Practice';
 
 const Home: React.FC = () => {
-    const {currentUser, signOut} = useContext(AuthContext);
+    const {signOut} = useContext(AuthContext);
     const {practiceMode} = usePractice();
     const {deckId} = useParams();
     const isDeckRoute = deckId !== undefined;
@@ -21,7 +21,7 @@ const Home: React.FC = () => {
         <div className="h-screen text-white">
             <nav className="bg-gray-600">
                 <div className="max-w-full flex items-center justify-between p-4">
-                    <h3>Welcome! {currentUser?.email}</h3>
+                    <h3>Welcome!</h3>
                     <button onClick={signOut}>Sign Out</button>
                 </div>
             </nav>

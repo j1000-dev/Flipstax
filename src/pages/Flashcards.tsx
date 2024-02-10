@@ -72,13 +72,13 @@ export const Flashcards: React.FC = () => {
         <div className="overflow-y-auto" style={{height: '80%'}}>
             {flashcards.map(fc => (
                 <div className="cursor-pointer py-3" key={fc.id}>
-                    <a className="block max-w-sm p-3 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <a className="block max-w-sm p-3 hover:bg-gray-100 bg-gray-800 border-gray-700 hover:bg-gray-700 border rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                         <div className="flex items-center justify-between">
                             <p
                                 dangerouslySetInnerHTML={{
                                     __html: fc.front_text
                                 }}
-                                className="mb-2 font-bold tracking-tight text-gray-900 dark:text-white"
+                                className="mb-2 font-bold tracking-tight text-white dark:text-white"
                             />
                             <div className="flex items-center">
                                 <svg

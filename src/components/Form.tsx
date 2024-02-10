@@ -69,7 +69,7 @@ export const Form: React.FC<FormProps> = ({formType}) => {
         <div className="flex flex-col items-center">
             <img src="/img/logo.png" height={400} width={400} />
             <div
-                className="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                className="p-6 bg-gray-800 border border-gray-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
                 style={{width: '500px'}}>
                 {errorMessage !== '' && (
                     <div
@@ -154,14 +154,14 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                         <div className="flex justify-between">
                             <button
                                 type="submit"
-                                className="text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-300 dark:hover:bg-green-400 dark:focus:ring-blue-800">
+                                className="text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-green-300 hover:bg-green-400 focus:ring-green-800 dark:bg-green-300 dark:hover:bg-green-400 dark:focus:ring-green-800">
                                 {formType == 'login'
                                     ? 'Login'
                                     : 'Create Account'}
                             </button>
                             <Link
                                 to={formType == 'login' ? '/signup' : '/login'}>
-                                <button className="text-black focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-400 dark:hover:bg-blue-500 dark:focus:ring-pink-600">
+                                <button className="text-black bg-blue-400 hover:bg-blue-500 focus:ring-blue-600 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-400 dark:hover:bg-blue-500 dark:focus:ring-blue-600">
                                     {formType == 'login' ? (
                                         'Sign Up'
                                     ) : (
