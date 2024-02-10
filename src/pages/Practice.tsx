@@ -3,15 +3,27 @@ import {useParams} from 'react-router-dom';
 import {usePractice} from '../context/practice-context';
 
 export const Practice: React.FC = () => {
-    const {fetchFlashcards, flashcards, reviewType, shuffleFC} = usePractice();
+    const {fetchFlashcards, flashcards, reviewType, shuffleFC, deckName} =
+        usePractice();
     const [curIndex, setCurIndex] = useState<number>(0);
     const [showFront, setShowFront] = useState<boolean>(true);
     const [isFlipped, setIsFlipped] = useState<boolean>(false);
+    const [deck, setDeck] = useState<string>('');
     const {deckId} = useParams();
 
     useEffect(() => {
         fetchFlashcards();
     }, [deckId, reviewType]);
+
+    useEffect(() => {
+        const fetchDeckName = async (): Promise<void> => {
+            if (deckId) {
+                const deck = await deckName(deckId);
+                setDeck(deck || '');
+            }
+        };
+        fetchDeckName();
+    }, [deckId]);
 
     const handleClick = (type: string): void => {
         let tempIndex = curIndex;
@@ -45,12 +57,12 @@ export const Practice: React.FC = () => {
     }
 
     return (
-        <div style={{height: '80%'}}>
+        <div>
             {flashcards.length > 0 && (
                 <>
                     <div className="flex items-center">
                         <p className="mr-3 tracking-wider text-gray-500 md:text-lg capitalize dark:text-gray-400">
-                            {reviewType} flashcards
+                            {reviewType} flashcards: {deck}
                         </p>
                         <svg
                             onClick={() => {
@@ -91,7 +103,7 @@ export const Practice: React.FC = () => {
                     <div className="flex flex-col items-center">
                         <div
                             className={`max-w-screen text-center p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ${isFlipped ? 'flip flip-card' : 'flip'}`}
-                            style={{height: '500px', width: '70%'}}>
+                            style={{height: '400px', width: '50%'}}>
                             <div className="flex justify-center items-center h-full">
                                 {showFront === true ? (
                                     <p

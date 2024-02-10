@@ -21,6 +21,7 @@ interface PracticeContextProps {
     setType: (reviewType: string) => void;
     fetchFlashcards: () => void;
     shuffleFC: () => void;
+    deckName: (deckId: string) => Promise<string | null>;
 }
 
 const PracticeContext = createContext<PracticeContextProps | undefined>(
@@ -73,6 +74,25 @@ export function PracticeProvider({
         setReviewType(reviewType);
     };
 
+    const deckName = async (deckId: string): Promise<string | null> => {
+        try {
+            const deckDoc = await db
+                .collection(`users/${userId}/decks`)
+                .doc(deckId)
+                .get();
+
+            if (deckDoc.exists) {
+                const deckName = deckDoc.data()?.name;
+                return deckName || null;
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.error('Error getting deck:', error);
+            return null;
+        }
+    };
+
     //Fisher-Yates shuffle algorithm
     const shuffleFC = (): void => {
         // Create a copy of the flashcards array to avoid modifying the original array directly
@@ -82,8 +102,6 @@ export function PracticeProvider({
             const j = Math.floor(Math.random() * (i + 1));
             [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
         }
-
-        console.log(shuffled);
         setFlashcards(shuffled);
     };
 
@@ -94,7 +112,8 @@ export function PracticeProvider({
         practiceMode,
         setMode,
         reviewType,
-        shuffleFC
+        shuffleFC,
+        deckName
     };
 
     return (

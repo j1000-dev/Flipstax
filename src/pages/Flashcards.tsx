@@ -45,6 +45,7 @@ export const Flashcards: React.FC = () => {
         if (deckId) {
             deleteFlashcard(deckId, selectedFlashcard);
         }
+        setDeleteModal(false);
     };
 
     const handleFrontText = (event: ChangeEvent<HTMLTextAreaElement>): void => {

@@ -19,17 +19,17 @@ const Home: React.FC = () => {
     const isDeckRoute = deckId !== undefined;
 
     return (
-        <div className="h-screen text-white">
-            <nav className="bg-gray-600">
-                <div className="max-w-full flex items-center justify-between p-4">
+        <div className="min-h-screen text-white">
+            <nav className="bg-gray-600 p-4">
+                <div className="max-w-full flex items-center justify-between">
                     <h3>Welcome!</h3>
                     <PrimaryButton content={'Sign Out'} onClick={signOut} />
                 </div>
             </nav>
-            <div className="grid grid-cols-4">
-                <div className="mr-5 col-start-1 col-span-1">
+            <div className="md:grid md:grid-cols-4">
+                <div className="md:mr-5 md:col-start-1 md:col-span-1">
                     <div className="flex">
-                        <aside className="fixed w-96 h-screen bg-[#131B2E] p-4">
+                        <aside className="md:w-96 md:h-screen bg-[#131B2E] p-4">
                             {isDeckRoute ? (
                                 <FlashcardProvider>
                                     <CreateFlashcard />
@@ -44,7 +44,7 @@ const Home: React.FC = () => {
                         </aside>
                     </div>
                 </div>
-                <div className="ml-5 p-4 col-start-2 col-span-3">
+                <div className="md:ml-5 md:p-4 md:col-start-2 md:col-span-3">
                     {practiceMode ? (
                         <Practice />
                     ) : (
