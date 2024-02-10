@@ -123,7 +123,7 @@ export const Practice: React.FC = () => {
                                     />
                                 ) : (
                                     <p
-                                        className={`flip-card-back text-white text-xl dark:text-white ${isFlipped ? 'flip-card-back' : ''}`}
+                                        className={`text-white text-xl dark:text-white ${isFlipped ? 'flip-card-back' : ''}`}
                                         dangerouslySetInnerHTML={{
                                             __html: flashcards[curIndex]
                                                 .back_text
