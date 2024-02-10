@@ -64,8 +64,8 @@ export const Decks: React.FC = () => {
                     className="cursor-pointer py-3"
                     key={deck.id}
                     onClick={event => handleDeckClick(deck.id, 'deck', event)}>
-                    <div className="text-white block max-w-sm p-4 bg-gray-800 border-gray-700 :hover:bg-gray-700 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <h3 className="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">
+                    <div className="text-white block max-w-sm p-4 bg-gray-800 border-gray-700 hover:bg-gray-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                        <h3 className="mb-2 font-bold tracking-tight text-white dark:text-white">
                             {deck.name}
                         </h3>
                         <div className="flex items-center justify-between">
