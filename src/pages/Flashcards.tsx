@@ -83,7 +83,7 @@ export const Flashcards: React.FC = () => {
                             <div className="flex items-center">
                                 <svg
                                     onClick={() => handleDeleteClick(fc.id)}
-                                    className="w-6 h-6 text-gray-800 dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-500"
+                                    className="w-6 h-6 text-white dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-500"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -100,7 +100,7 @@ export const Flashcards: React.FC = () => {
                                     onClick={() => {
                                         handleEditClick(fc.id);
                                     }}
-                                    className="ml-2 mr-1 w-7 h-7 text-gray-800 dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-500"
+                                    className="ml-2 mr-1 w-7 h-7 text-white dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-500"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"

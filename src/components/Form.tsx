@@ -122,7 +122,7 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                         <div className="mb-5">
                             <label
                                 htmlFor="email"
-                                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                className="block mb-2 text-sm font-medium text-gray-900 text-white dark:text-white">
                                 Email
                             </label>
                             <input
@@ -138,7 +138,7 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                         <div className="mb-5">
                             <label
                                 htmlFor="password"
-                                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                className="block mb-2 text-sm font-medium text-gray-900 text-white dark:text-white">
                                 Password
                             </label>
                             <input

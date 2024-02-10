@@ -64,7 +64,7 @@ export const Decks: React.FC = () => {
                     className="cursor-pointer py-3"
                     key={deck.id}
                     onClick={event => handleDeckClick(deck.id, 'deck', event)}>
-                    <div className="block max-w-sm p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+                    <div className="text-white block max-w-sm p-4 bg-gray-800 border-gray-700 :hover:bg-gray-700 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
                         <h3 className="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">
                             {deck.name}
                         </h3>
@@ -79,7 +79,7 @@ export const Decks: React.FC = () => {
                                             event
                                         )
                                     }
-                                    className="w-6 h-6 text-gray-800 dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-500"
+                                    className="w-6 h-6 text-gray-800 text-white dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-500"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -96,7 +96,7 @@ export const Decks: React.FC = () => {
                                     onClick={event =>
                                         handleDeckClick(deck.id, 'edit', event)
                                     }
-                                    className="ml-2 w-7 h-7 text-gray-800 dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-500"
+                                    className="ml-2 w-7 h-7 text-gray-800 text-white dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-500"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
