@@ -139,14 +139,14 @@ export const Flashcards: React.FC = () => {
                         {/* Modal content */}
                         <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
                             {/* Modal header */}
-                            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-600">
+                                <h3 className="text-xl font-semibold text-white dark:text-white">
                                     Edit Flashcard
                                 </h3>
                                 <button
                                     onClick={(): void => setEditModal(false)}
                                     type="button"
-                                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                    className="text-gray-400 bg-transparent hover:bg-gray-600 hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                     data-modal-hide="default-modal">
                                     <svg
                                         className="w-3 h-3"
@@ -170,7 +170,7 @@ export const Flashcards: React.FC = () => {
                                 <div className="mb-5">
                                     <label
                                         htmlFor="frontText"
-                                        className="block my-2 text-sm font-medium text-gray-900 dark:text-white">
+                                        className="block my-2 text-sm font-medium text-white dark:text-white">
                                         Front
                                     </label>
                                     <textarea
@@ -186,7 +186,7 @@ export const Flashcards: React.FC = () => {
                                 <div className="mt-5">
                                     <label
                                         htmlFor="back"
-                                        className="block my-2 text-sm font-medium text-gray-900 dark:text-white">
+                                        className="block my-2 text-sm font-medium text-white dark:text-white">
                                         Back
                                     </label>
                                     <textarea
@@ -199,10 +199,10 @@ export const Flashcards: React.FC = () => {
                                 </div>
                             </div>
                             {/* Modal footer */}
-                            <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <div className="flex items-center p-4 md:p-5 border-t border-gray-600 rounded-b dark:border-gray-600">
                                 <button
                                     onClick={() => editFC()}
-                                    className="mx-2 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    className="bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 mx-2 text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     Save and close
                                 </button>
                             </div>
