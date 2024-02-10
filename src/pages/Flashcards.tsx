@@ -4,6 +4,7 @@ import {useParams} from 'react-router-dom';
 import {HeartIcon} from '../icons/HeartIcon';
 import {FilledHeartIcon} from '../icons/FilledHeartIcon';
 import {PrimaryButton} from '../components/PrimaryButton';
+import {SecondaryButton} from '../components/SecondaryButton';
 import {Modal} from '../components/Modal';
 
 export const Flashcards: React.FC = () => {
@@ -13,6 +14,7 @@ export const Flashcards: React.FC = () => {
     const [frontText, setFrontText] = useState<string>('');
     const [backText, setBackText] = useState<string>('');
     const [selectedFlashcard, setSelectedFlashcard] = useState<string>('');
+    const [deleteModal, setDeleteModal]= useState<boolean>(false);
     const {deckId} = useParams();
 
     useEffect(() => {
@@ -25,7 +27,6 @@ export const Flashcards: React.FC = () => {
 
     const handleEditClick = (id: string): void => {
         setSelectedFlashcard(id);
-
         //Retrieve the selected flashcard details and set the initial values for frontText and backText
         const selectedFlashcardDetails = flashcards.find(fc => fc.id === id);
         if (selectedFlashcardDetails) {
@@ -36,10 +37,10 @@ export const Flashcards: React.FC = () => {
         setEditModal(true);
     };
 
-    const handleDeleteClick = async (event: React.MouseEvent,flashcardId: string): Promise<void> => {
+    const handleDeleteClick = async (event: React.MouseEvent): Promise<void> => {
         event.stopPropagation();
         if (deckId) {
-            deleteFlashcard(deckId, flashcardId);
+            deleteFlashcard(deckId, selectedFlashcard);
         }
     };
 
@@ -98,7 +99,7 @@ export const Flashcards: React.FC = () => {
                             />
                             <div className="flex items-center">
                                 <svg
-                                    onClick={(event) => handleDeleteClick(event, fc.id)}
+                                    onClick={(event) => {event.stopPropagation(), setDeleteModal(true), setSelectedFlashcard(fc.id)}}
                                     className="w-6 h-6 text-white dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-500"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -179,6 +180,30 @@ export const Flashcards: React.FC = () => {
                             content="Save and close"
                             onClick={() => editFC()}
                         />
+                    }
+                />
+            )}
+            {deleteModal == true && (
+                <Modal
+                    title="Delete your flashcard"
+                    onClose={() => setDeleteModal(false)}
+                    body={
+                        <p className="text-base leading-relaxed text-gray-400 dark:text-gray-400">
+                            Are you sure you want to delete this flashcard?
+                        </p>
+                    }
+                    footer={
+                        <>
+                            <PrimaryButton
+                                content="Yes"
+                                onClick={(event) => handleDeleteClick(event)}
+                            />
+                            <span className="mx-1"></span>
+                            <SecondaryButton
+                                content="Cancel"
+                                onClick={() => setDeleteModal(false)}
+                            />
+                        </>
                     }
                 />
             )}
