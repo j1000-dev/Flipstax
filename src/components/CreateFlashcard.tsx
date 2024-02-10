@@ -231,7 +231,9 @@ export const CreateFlashcard: React.FC = () => {
                             </div>
                             {/* Modal body */}
                             <div className="p-4 md:p-5 space-y-4">
-                                <p className="text-white">Pick the items you would like to review</p>
+                                <p className="text-white">
+                                    Pick the items you would like to review
+                                </p>
                                 <div className="flex items-center mb-4">
                                     <input
                                         id="review-option-all"

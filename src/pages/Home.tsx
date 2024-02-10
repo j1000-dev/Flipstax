@@ -10,6 +10,7 @@ import {FlashcardProvider} from '../context/flashcard-context';
 import {Flashcards} from './Flashcards';
 import {usePractice} from '../context/practice-context';
 import {Practice} from './Practice';
+import { PrimaryButton } from '../components/PrimaryButton';
 
 const Home: React.FC = () => {
     const {signOut} = useContext(AuthContext);
@@ -22,7 +23,7 @@ const Home: React.FC = () => {
             <nav className="bg-gray-600">
                 <div className="max-w-full flex items-center justify-between p-4">
                     <h3>Welcome!</h3>
-                    <button onClick={signOut}>Sign Out</button>
+                    <PrimaryButton content={'Sign Out'} onClick={signOut} />
                 </div>
             </nav>
             <div className="grid grid-cols-4">

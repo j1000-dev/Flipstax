@@ -69,14 +69,14 @@ export const Form: React.FC<FormProps> = ({formType}) => {
         <div className="flex flex-col items-center">
             <img src="/img/logo.png" height={400} width={400} />
             <div
-                className="p-6 bg-gray-800 border border-gray-700 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+                className="p-6 bg-gray-800 border border-gray-700 dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow"
                 style={{width: '500px'}}>
                 {errorMessage !== '' && (
                     <div
                         id="toast-danger"
-                        className="flex items-center mx-auto w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-700"
+                        className="flex items-center mx-auto w-full max-w-xs p-4 mb-4 text-gray-400 bg-gray-700 dark:text-gray-400 dark:bg-gray-700 rounded-lg shadow"
                         role="alert">
-                        <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+                        <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-200 bg-red-800 rounded-lg dark:bg-red-800 dark:text-red-200">
                             <svg
                                 className="w-5 h-5"
                                 aria-hidden="true"
@@ -93,7 +93,17 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                         <button
                             onClick={(): void => setErrorMessage('')}
                             type="button"
-                            className="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-600"
+                            className="
+                                ms-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 
+                                hover:bg-gray-600 
+                                bg-gray-800 
+                                hover:text-white 
+                                text-gray-500 
+                                dark:hover:text-white 
+                                dark:text-gray-500 
+                                dark:bg-gray-800 
+                                dark:hover:bg-gray-600 
+                                inline-flex items-center justify-center h-8 w-8"
                             data-dismiss-target="#toast-danger"
                             aria-label="Close">
                             <span className="sr-only">Close</span>
@@ -122,11 +132,21 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                         <div className="mb-5">
                             <label
                                 htmlFor="email"
-                                className="block mb-2 text-sm font-medium text-gray-900 text-white dark:text-white">
+                                className="block mb-2 text-sm font-medium text-white dark:text-white">
                                 Email
                             </label>
                             <input
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                className="
+                                    text-sm 
+                                    block w-full p-2.5 rounded-lg 
+                                    focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500
+                                    bg-gray-700 border border-gray-600 placeholder-gray-400 text-white
+                                    dark:bg-gray-700 
+                                    dark:border-gray-600 
+                                    dark:placeholder-gray-400 
+                                    dark:text-white 
+                                    dark:focus:ring-blue-500 
+                                    dark:focus:border-blue-500"
                                 type="email"
                                 name="email"
                                 value={email}
@@ -142,7 +162,17 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                                 Password
                             </label>
                             <input
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                className="
+                                    text-sm 
+                                    block w-full p-2.5 rounded-lg 
+                                    focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500
+                                    bg-gray-700 border border-gray-600 placeholder-gray-400 text-white
+                                    dark:bg-gray-700 
+                                    dark:border-gray-600 
+                                    dark:placeholder-gray-400 
+                                    dark:text-white 
+                                    dark:focus:ring-blue-500 
+                                    dark:focus:border-blue-500"
                                 type="password"
                                 name="password"
                                 value={password}
@@ -154,14 +184,30 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                         <div className="flex justify-between">
                             <button
                                 type="submit"
-                                className="text-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-green-300 hover:bg-green-400 focus:ring-green-800 dark:bg-green-300 dark:hover:bg-green-400 dark:focus:ring-green-800">
+                                className="
+                                text-black 
+                                focus:ring-4 focus:outline-none focus:ring-blue-300 focus:ring-green-800
+                                font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 
+                                bg-green-300 hover:bg-green-400 
+                                dark:bg-green-300 dark:hover:bg-green-400 
+                                dark:focus:ring-green-800">
                                 {formType == 'login'
                                     ? 'Login'
                                     : 'Create Account'}
                             </button>
                             <Link
                                 to={formType == 'login' ? '/signup' : '/login'}>
-                                <button className="text-black bg-blue-400 hover:bg-blue-500 focus:ring-blue-600 focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-400 dark:hover:bg-blue-500 dark:focus:ring-blue-600">
+                                <button className="
+                                    text-black 
+                                    bg-blue-400 
+                                    hover:bg-blue-500 
+                                    focus:ring-blue-600 
+                                    focus:ring-4 focus:outline-none focus:ring-pink-300 
+                                    font-medium 
+                                    rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center 
+                                    dark:bg-blue-400 
+                                    dark:hover:bg-blue-500 
+                                    dark:focus:ring-blue-600">
                                     {formType == 'login' ? (
                                         'Sign Up'
                                     ) : (

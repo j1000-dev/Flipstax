@@ -66,7 +66,7 @@ export function DeckProvider({
                         await deckData.fetchFlashcardSize();
                     decksData.push(deckData);
                 }
-
+                decksData.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime());
                 setDecks(decksData);
             });
         return fetchDecks;
