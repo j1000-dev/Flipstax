@@ -14,7 +14,7 @@ export const Flashcards: React.FC = () => {
     const [frontText, setFrontText] = useState<string>('');
     const [backText, setBackText] = useState<string>('');
     const [selectedFlashcard, setSelectedFlashcard] = useState<string>('');
-    const [deleteModal, setDeleteModal]= useState<boolean>(false);
+    const [deleteModal, setDeleteModal] = useState<boolean>(false);
     const {deckId} = useParams();
 
     useEffect(() => {
@@ -35,9 +35,12 @@ export const Flashcards: React.FC = () => {
         }
 
         setEditModal(true);
+        setDeleteModal(false);
     };
 
-    const handleDeleteClick = async (event: React.MouseEvent): Promise<void> => {
+    const handleDeleteClick = async (
+        event: React.MouseEvent
+    ): Promise<void> => {
         event.stopPropagation();
         if (deckId) {
             deleteFlashcard(deckId, selectedFlashcard);
@@ -99,7 +102,12 @@ export const Flashcards: React.FC = () => {
                             />
                             <div className="flex items-center">
                                 <svg
-                                    onClick={(event) => {event.stopPropagation(), setDeleteModal(true), setSelectedFlashcard(fc.id)}}
+                                    onClick={event => {
+                                        event.stopPropagation(),
+                                        setDeleteModal(true),
+                                        setEditModal(false),
+                                        setSelectedFlashcard(fc.id);
+                                    }}
                                     className="w-6 h-6 text-white dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-500"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
@@ -196,7 +204,7 @@ export const Flashcards: React.FC = () => {
                         <>
                             <PrimaryButton
                                 content="Yes"
-                                onClick={(event) => handleDeleteClick(event)}
+                                onClick={event => handleDeleteClick(event)}
                             />
                             <span className="mx-1"></span>
                             <SecondaryButton
