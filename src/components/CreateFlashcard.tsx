@@ -113,16 +113,16 @@ export const CreateFlashcard: React.FC = () => {
                     className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-2xl max-h-full overflow-y-auto">
                     <div className="relative p-4 w-full max-w-2xl max-h-full">
                         {/* Modal content */}
-                        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div className="relative bg-gray-700 rounded-lg shadow dark:bg-gray-700">
                             {/* Modal header */}
-                            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-600 dark:border-gray-600">
+                                <h3 className="text-xl font-semibold text-white dark:text-white">
                                     Create Flashcard
                                 </h3>
                                 <button
                                     onClick={(): void => setOpenModal(false)}
                                     type="button"
-                                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                    className="text-white bg-transparent hover:bg-gray-600 hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                     data-modal-hide="default-modal">
                                     <svg
                                         className="w-3 h-3"
@@ -178,12 +178,12 @@ export const CreateFlashcard: React.FC = () => {
                             <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
                                 <button
                                     onClick={() => addFlashcard('saveAndClose')}
-                                    className="mx-2 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    className="mx-2 text-white bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     Save and close
                                 </button>
                                 <button
                                     onClick={() => addFlashcard('addAnother')}
-                                    className="mx-2 text-white focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-pink-600 dark:hover:bg-pink-500 dark:focus:ring-pink-600">
+                                    className="bg-pink-600 hover:bg-pink-500 focus:ring-pink-600 mx-2 text-white focus:ring-4 focus:outline-none focus:ring-pink-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-pink-600 dark:hover:bg-pink-500 dark:focus:ring-pink-600">
                                     Add another
                                 </button>
                             </div>
@@ -199,10 +199,10 @@ export const CreateFlashcard: React.FC = () => {
                     className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-2xl max-h-full overflow-y-auto">
                     <div className="relative p-4 w-full max-w-2xl max-h-full">
                         {/* Modal content */}
-                        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div className="relative bg-gray-700 rounded-lg shadow dark:bg-gray-700">
                             {/* Modal header */}
-                            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                            <div className="flex items-center justify-between p-4 md:p-5 border-b border-gray-600 rounded-t dark:border-gray-600">
+                                <h3 className="text-xl font-semibold text-white dark:text-white">
                                     Pick items to review
                                 </h3>
                                 <button
@@ -210,7 +210,7 @@ export const CreateFlashcard: React.FC = () => {
                                         setPracticeModal(false)
                                     }
                                     type="button"
-                                    className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                                    className="text-gray-400 bg-transparent hover:bg-gray-600 hover:text-white rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                     data-modal-hide="default-modal">
                                     <svg
                                         className="w-3 h-3"
@@ -231,7 +231,7 @@ export const CreateFlashcard: React.FC = () => {
                             </div>
                             {/* Modal body */}
                             <div className="p-4 md:p-5 space-y-4">
-                                <p>Pick the items you would like to review</p>
+                                <p className="text-white">Pick the items you would like to review</p>
                                 <div className="flex items-center mb-4">
                                     <input
                                         id="review-option-all"
@@ -270,7 +270,7 @@ export const CreateFlashcard: React.FC = () => {
                             <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
                                 <button
                                     onClick={() => practiceFlashcards()}
-                                    className="mx-2 text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    className="bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 mx-2 text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                     Practice
                                 </button>
                             </div>
