@@ -107,14 +107,15 @@ export const Practice: React.FC = () => {
                             bg-gray-800 border border-gray-700
                             dark:bg-gray-800 dark:border-gray-700 ${isFlipped ? 'flip flip-card' : 'flip'}`}
                             style={{height: '400px', width: '50%'}}>
-                            <p
-                                className={`tracking-normal text-gray-400 md:text-lg dark:text-gray-400 ${!showFront ? 'flip-card-back' : ''}`}>
+                            <p className={
+                                `tracking-normal text-gray-400 md:text-lg dark:text-gray-400 ${isFlipped ? 'flip-card-back' : ''}`}
+                            >
                                 {showFront == true ? 'Front' : 'Back'}
                             </p>
                             <div className="flex justify-center items-center h-full">
                                 {showFront === true ? (
                                     <p
-                                        className="text-white text-xl dark:text-white"
+                                        className={`text-white text-xl dark:text-white ${isFlipped ? 'flip-card-back' : ''}`}
                                         dangerouslySetInnerHTML={{
                                             __html: flashcards[curIndex]
                                                 .front_text

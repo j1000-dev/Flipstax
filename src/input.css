@@ -10,7 +10,7 @@
     transition: transform 0.5s;
 }
 
-.flip.flip-card {
+.flip-card {
     transform: rotateY(180deg);
 }
 
