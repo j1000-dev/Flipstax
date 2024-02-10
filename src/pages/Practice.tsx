@@ -53,7 +53,7 @@ export const Practice: React.FC = () => {
 
     // Check if flashcards array is not empty before rendering
     if (flashcards.length === 0) {
-        return <p>Waiting for flashcards to practice...</p>; // or any loading indicator
+        return <p>Loading...</p>; // or any loading indicator
     }
 
     return (
@@ -61,7 +61,7 @@ export const Practice: React.FC = () => {
             {flashcards.length > 0 && (
                 <>
                     <div className="flex items-center">
-                        <p className="mr-3 tracking-wider text-gray-500 md:text-lg capitalize dark:text-gray-400">
+                        <p className="mr-3 tracking-wider text-gray-400 md:text-lg capitalize dark:text-gray-400">
                             {reviewType} flashcards: {deck}
                         </p>
                         <svg
@@ -69,7 +69,7 @@ export const Practice: React.FC = () => {
                                 shuffleFC();
                                 setCurIndex(0);
                             }}
-                            className="cursor-pointer w-6 h-6 text-gray-800 dark:text-white"
+                            className="cursor-pointer w-6 h-6 text-white dark:text-white"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -84,7 +84,7 @@ export const Practice: React.FC = () => {
                         </svg>
                     </div>
                     <div className="flex flex-col justify-center my-5">
-                        <p className="text-center tracking-tight text-gray-500 md:text-lg dark:text-gray-400">
+                        <p className="text-center tracking-tight text-gray-400 md:text-lg dark:text-gray-400">
                             {curIndex + 1} of {flashcards.length} flashcards
                         </p>
                         <div className="flex justify-center mt-4">
@@ -102,12 +102,19 @@ export const Practice: React.FC = () => {
                     </div>
                     <div className="flex flex-col items-center">
                         <div
-                            className={`max-w-screen text-center p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 ${isFlipped ? 'flip flip-card' : 'flip'}`}
+                            className={`
+                            max-w-screen text-center p-6 rounded-lg shadow
+                            bg-gray-800 border border-gray-700
+                            dark:bg-gray-800 dark:border-gray-700 ${isFlipped ? 'flip flip-card' : 'flip'}`}
                             style={{height: '400px', width: '50%'}}>
+                            <p
+                                className={`tracking-normal text-gray-400 md:text-lg dark:text-gray-400 ${!showFront ? 'flip-card-back' : ''}`}>
+                                {showFront == true ? 'Front' : 'Back'}
+                            </p>
                             <div className="flex justify-center items-center h-full">
                                 {showFront === true ? (
                                     <p
-                                        className="text-gray-900 text-xl dark:text-white"
+                                        className="text-white text-xl dark:text-white"
                                         dangerouslySetInnerHTML={{
                                             __html: flashcards[curIndex]
                                                 .front_text
@@ -115,7 +122,7 @@ export const Practice: React.FC = () => {
                                     />
                                 ) : (
                                     <p
-                                        className="flip-card-back text-gray-900 text-xl dark:text-white"
+                                        className="flip-card-back text-white text-xl dark:text-white"
                                         dangerouslySetInnerHTML={{
                                             __html: flashcards[curIndex]
                                                 .back_text
@@ -126,7 +133,7 @@ export const Practice: React.FC = () => {
                         </div>
                         <button
                             type="button"
-                            className="my-5 text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                            className="my-5 text-black bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
                             onClick={() => handleFlip()}>
                             Flip
                         </button>
