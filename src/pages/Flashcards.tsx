@@ -125,7 +125,7 @@ export const Flashcards: React.FC = () => {
                     className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-2xl max-h-full overflow-y-auto">
                     <div className="relative p-4 w-full max-w-2xl max-h-full">
                         {/* Modal content */}
-                        <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                        <div className="relative bg-gray-700 rounded-lg shadow dark:bg-gray-700">
                             {/* Modal header */}
                             <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600 border-gray-600">
                                 <h3 className="text-xl font-semibold text-white dark:text-white">
