@@ -243,7 +243,7 @@ export const CreateFlashcard: React.FC = () => {
                                     />
                                     <label
                                         htmlFor="review-option-all"
-                                        className="block ms-2  text-sm font-medium text-gray-900 dark:text-gray-300">
+                                        className="block ms-2  text-sm font-medium text-gray-300 dark:text-gray-300">
                                         All items
                                     </label>
                                 </div>
@@ -261,13 +261,13 @@ export const CreateFlashcard: React.FC = () => {
                                     />
                                     <label
                                         htmlFor="review-option-favorite"
-                                        className="block ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                        className="block ms-2 text-sm font-medium text-gray-300 dark:text-gray-300">
                                         Favorites only
                                     </label>
                                 </div>
                             </div>
                             {/* Modal footer */}
-                            <div className="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <div className="flex items-center p-4 md:p-5 border-t border-gray-600 rounded-b dark:border-gray-600">
                                 <button
                                     onClick={() => practiceFlashcards()}
                                     className="bg-blue-600 hover:bg-blue-700 focus:ring-blue-800 mx-2 text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
