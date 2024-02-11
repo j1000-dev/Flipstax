@@ -14,6 +14,7 @@ export const SecondaryButton: React.FC<SecondaryButtonProps> = ({
             type="submit"
             onClick={onClick}
             className="
+            m-3
             text-black 
             bg-blue-400 
             hover:bg-blue-500 

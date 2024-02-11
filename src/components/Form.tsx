@@ -67,10 +67,8 @@ export const Form: React.FC<FormProps> = ({formType}) => {
 
     return (
         <div className="flex flex-col items-center">
-            <img src="/img/logo.png" height={400} width={400} />
-            <div
-                className="p-6 bg-gray-800 border border-gray-700 dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow"
-                style={{width: '500px'}}>
+            <img src="/img/logo.png" height={400} width={400} className="mb-8" />
+            <div className="p-6 bg-gray-800 border border-gray-700 dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow w-full max-w-md">
                 {errorMessage !== '' && (
                     <div
                         id="toast-danger"
@@ -186,6 +184,7 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                                 type="submit"
                                 className="
                                 text-black 
+                                m-3
                                 focus:ring-4 focus:outline-none focus:ring-blue-300 focus:ring-green-800
                                 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 
                                 bg-green-300 hover:bg-green-400 
@@ -201,6 +200,7 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                                     className="
                                     text-black 
                                     bg-blue-400 
+                                    m-3
                                     hover:bg-blue-500 
                                     focus:ring-blue-600 
                                     focus:ring-4 focus:outline-none focus:ring-pink-300 
