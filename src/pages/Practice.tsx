@@ -53,15 +53,15 @@ export const Practice: React.FC = () => {
 
     // Check if flashcards array is not empty before rendering
     if (flashcards.length === 0) {
-        return <p>Loading...</p>; // or any loading indicator
+        return <p>No flashcards selected to practice.</p>; // or any loading indicator
     }
 
     return (
         <div>
             {flashcards.length > 0 && (
                 <>
-                    <div className="flex items-center">
-                        <p className="mr-3 tracking-wider text-gray-400 md:text-lg capitalize dark:text-gray-400">
+                    <div className="flex items-center justify-center m-3">
+                        <p className="tracking-wider text-gray-400 md:text-lg capitalize dark:text-gray-400">
                             {reviewType} flashcards: {deck}
                         </p>
                         <svg
@@ -69,7 +69,7 @@ export const Practice: React.FC = () => {
                                 shuffleFC();
                                 setCurIndex(0);
                             }}
-                            className="cursor-pointer w-6 h-6 text-white dark:text-white"
+                            className="cursor-pointer w-6 h-6 text-white dark:text-white mx-5"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -106,7 +106,7 @@ export const Practice: React.FC = () => {
                             max-w-screen text-center p-6 rounded-lg shadow
                             bg-gray-800 border border-gray-700
                             dark:bg-gray-800 dark:border-gray-700 ${isFlipped ? 'flip flip-card' : 'flip'}`}
-                            style={{height: '400px', width: '50%'}}>
+                            style={{height: '400px', width: '60%'}}>
                             <p className={
                                 `tracking-normal text-gray-400 md:text-lg dark:text-gray-400 ${isFlipped ? 'flip-card-back' : ''}`}
                             >
