@@ -1,10 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {usePractice} from '../context/practice-context';
+import {HeartIcon} from '../icons/HeartIcon';
+import {FilledHeartIcon} from '../icons/FilledHeartIcon';
+import {useFlashcard} from '../context/flashcard-context';
 
 export const Practice: React.FC = () => {
     const {fetchFlashcards, flashcards, reviewType, shuffleFC, deckName} =
         usePractice();
+    const {editFlashcard} =
+    useFlashcard();
     const [curIndex, setCurIndex] = useState<number>(0);
     const [showFront, setShowFront] = useState<boolean>(true);
     const [isFlipped, setIsFlipped] = useState<boolean>(false);
@@ -50,6 +55,18 @@ export const Practice: React.FC = () => {
         setIsFlipped(!isFlipped);
         setShowFront(!showFront);
     };
+
+    const favoriteFlashcard = async (
+        flashcardId: string,
+        favorited: Boolean,
+        event: React.MouseEvent
+    ): Promise<void> => {
+        event.stopPropagation();
+        if (deckId) {
+            editFlashcard(deckId, flashcardId, {favorited: !favorited});
+        }
+    };
+
 
     // Check if flashcards array is not empty before rendering
     if (flashcards.length === 0) {
@@ -107,11 +124,30 @@ export const Practice: React.FC = () => {
                             bg-gray-800 border border-gray-700
                             dark:bg-gray-800 dark:border-gray-700 ${isFlipped ? 'flip flip-card' : 'flip'}`}
                             style={{height: '400px', width: '60%'}}>
-                            <p className={
-                                `tracking-normal text-gray-400 md:text-lg dark:text-gray-400 ${isFlipped ? 'flip-card-back' : ''}`}
-                            >
-                                {showFront == true ? 'Front' : 'Back'}
-                            </p>
+                            <div className={`tracking-normal text-center text-gray-400 md:text-lg dark:text-gray-400 ${isFlipped ? 'flip-card-back' : ''}`}>
+                                {showFront == true ? (
+                                    <div className="grid grid-cols-3">
+                                        <p className="text-center col-start-2">Front</p>
+                                        <div className="flex justify-end col-start-3 cursor-pointer"
+                                            onClick={event =>
+                                                favoriteFlashcard(
+                                                    flashcards[curIndex].id,
+                                                    flashcards[curIndex].favorited,
+                                                    event
+                                                )
+                                            }
+                                        >
+                                            {flashcards[curIndex].favorited == true ? (
+                                                <FilledHeartIcon />
+                                            ) : (
+                                                <HeartIcon />
+                                            )}
+                                        </div>
+                                    </div>
+                                ) : (
+                                    'Back'
+                                )}
+                            </div>
                             <div className="flex justify-center items-center h-full">
                                 {showFront === true ? (
                                     <p

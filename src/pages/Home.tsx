@@ -87,7 +87,9 @@ const Home: React.FC = () => {
                 </div>
                 <div className={`md:ml-5 md:p-4 transition-transform duration-300 ease-in-out transform ${isAsideOpen ? 'hidden md:block lg:block md:col-start-2 md:col-span-3 translate-x-0' : 'md:col-start-1 md:col-span-4 md:-translate-x-10  xs:translate:none'}`}>
                     {practiceMode ? (
-                        <Practice />
+                        <FlashcardProvider>
+                            <Practice />
+                        </FlashcardProvider>
                     ) : (
                         <h1 className="text-center">
                             No flashcards selected to practice.
