@@ -67,7 +67,7 @@ export const Form: React.FC<FormProps> = ({formType}) => {
 
     return (
         <div className="flex flex-col items-center">
-            <img src="/img/logo.png" height={400} width={400} className="mb-8" />
+            <img src="/img/logo.png" height={175} width={175} className="mb-8" />
             <div className="p-6 bg-gray-800 border border-gray-700 dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow w-full max-w-md">
                 {errorMessage !== '' && (
                     <div
