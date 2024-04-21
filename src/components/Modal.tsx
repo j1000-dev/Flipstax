@@ -13,8 +13,8 @@ export const Modal: React.FC<ModalProps> = ({title, body, footer, onClose}) => {
             id="default-modal"
             tabIndex={-1}
             aria-hidden="true"
-            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-2xl max-h-full overflow-y-auto">
-            <div className="relative p-4 w-full max-w-2xl max-h-full">
+            className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md md:max-w-2xl max-h-full overflow-y-auto">
+            <div className="relative p-4 w-full max-h-full">
                 {/* Modal content */}
                 <div className="relative bg-gray-700 dark:bg-gray-700 rounded-lg shadow">
                     {/* Modal header */}
