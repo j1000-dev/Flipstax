@@ -123,7 +123,7 @@ export const Practice: React.FC = () => {
                             max-w-screen text-center p-6 rounded-lg shadow
                             bg-gray-800 border border-gray-700
                             dark:bg-gray-800 dark:border-gray-700 ${isFlipped ? 'flip flip-card' : 'flip'}`}
-                            style={{height: '400px', width: '1000px'}}>
+                            style={{height: '400px', width: '700px'}}>
                             <div className={`tracking-normal text-center text-gray-400 md:text-lg dark:text-gray-400 ${isFlipped ? 'flip-card-back' : ''}`}>
                                 {showFront == true ? (
                                     <div className="grid grid-cols-3">
