@@ -75,7 +75,8 @@ export const Form: React.FC<FormProps> = ({ formType }) => {
 
     return (
         <div className={`
-            flex flex-col items-center justify-center p-4 md:p-8 lg:p-12 absolute inset-0 
+            fixed top-0 left-0 w-full h-full overflow-hidden
+            flex flex-col items-center justify-center p-4 md:p-8 lg:p-12
             bg-center bg-cover bg-no-repeat ${theme === 'light' ? 'bg-light-mode' : 'bg-dark-mode'}
         `}>
             <button
