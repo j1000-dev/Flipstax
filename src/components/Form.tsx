@@ -1,8 +1,9 @@
-import React from 'react';
-import {ChangeEvent, FormEvent, useState} from 'react';
-import {signInUser, auth, db} from '../firebase/firebase';
-import {createUserWithEmailAndPassword} from 'firebase/auth';
-import {useNavigate, Link} from 'react-router-dom';
+import React, { useContext } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
+import { signInUser, auth, db } from '../firebase/firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { useNavigate, Link } from 'react-router-dom';
+import { ThemeContext } from '../context/theme-context';
 
 type FormProps = {
     formType: 'login' | 'signup';
@@ -13,11 +14,18 @@ const defaultFormFields = {
     password: ''
 };
 
-export const Form: React.FC<FormProps> = ({formType}) => {
+export const Form: React.FC<FormProps> = ({ formType }) => {
     const [formFields, setFormFields] = useState(defaultFormFields);
     const [errorMessage, setErrorMessage] = useState<string>('');
-    const {email, password} = formFields;
+    const { email, password } = formFields;
     const navigate = useNavigate();
+    const themeContext = useContext(ThemeContext);
+
+    if (!themeContext) {
+        throw new Error('themeContext must be used within a ThemeProvider');
+    }
+
+    const { theme, toggleTheme } = themeContext;
 
     const resetFormFields = (): void => {
         return setFormFields(defaultFormFields);
@@ -61,20 +69,43 @@ export const Form: React.FC<FormProps> = ({formType}) => {
     };
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
-        const {name, value} = event.target;
-        setFormFields({...formFields, [name]: value});
+        const { name, value } = event.target;
+        setFormFields({ ...formFields, [name]: value });
     };
 
     return (
-        <div className="flex flex-col items-center">
-            <img src="/img/logo.png" height={175} width={175} className="mb-8" />
-            <div className="p-6 bg-gray-800 border border-gray-700 dark:bg-gray-800 dark:border-gray-700 rounded-lg shadow w-full max-w-md">
+        <div className={`
+            flex flex-col items-center justify-center p-4 md:p-8 lg:p-12 absolute inset-0 
+            bg-center bg-cover bg-no-repeat ${theme === 'light' ? 'bg-light-mode' : 'bg-dark-mode'}
+        `}>
+            <button
+                onClick={toggleTheme}
+                className="
+                    px-4 py-2 rounded absolute top-0 right-0 mt-4 mr-4 
+                    bg-gray-200 dark:bg-gray-800 text-slate-600 dark:text-white
+                "
+            >
+                <i className="fa-solid fa-circle-half-stroke"></i>
+            </button>
+            <div className="
+                    p-6 rounded-lg shadow w-full max-w-lg
+                    bg-slate-50/50 dark:bg-gray-700/50 border border-slate-50 dark:border-gray-700
+                "
+            >
                 {errorMessage !== '' && (
                     <div
                         id="toast-danger"
-                        className="flex items-center mx-auto w-full max-w-xs p-4 mb-4 text-gray-400 bg-gray-700 dark:text-gray-400 dark:bg-gray-700 rounded-lg shadow"
-                        role="alert">
-                        <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-200 bg-red-800 rounded-lg dark:bg-red-800 dark:text-red-200">
+                        className="
+                            flex items-center mx-auto w-full max-w-xs p-4 mb-4 rounded-lg shadow
+                            bg-slate-200 text-slate-600 dark:text-slate-200 dark:bg-gray-700
+                        "
+                        role="alert"
+                    >
+                        <div className="
+                                inline-flex items-center justify-center flex-shrink-0 w-8 h-8  rounded-lg 
+                                text-red-200 bg-red-600 dark:bg-red-800 dark:text-red-200
+                            "
+                        >
                             <svg
                                 className="w-5 h-5"
                                 aria-hidden="true"
@@ -92,16 +123,10 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                             onClick={(): void => setErrorMessage('')}
                             type="button"
                             className="
-                                ms-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 
-                                hover:bg-gray-600 
-                                bg-gray-800 
-                                hover:text-white 
-                                text-gray-500 
-                                dark:hover:text-white 
-                                dark:text-gray-500 
-                                dark:bg-gray-800 
-                                dark:hover:bg-gray-600 
-                                inline-flex items-center justify-center h-8 w-8"
+                                ms-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5
+                                inline-flex items-center justify-center h-8 w-8
+                                text-gray-500 hover:text-slate-400 dark:hover:text-white dark:text-gray-500
+                            "
                             data-dismiss-target="#toast-danger"
                             aria-label="Close">
                             <span className="sr-only">Close</span>
@@ -124,27 +149,18 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                 )}
                 <div className="card">
                     <form
-                        onSubmit={
-                            formType === 'login' ? handleLogin : handleSignUp
-                        }>
+                        onSubmit={ formType === 'login' ? handleLogin : handleSignUp }>
                         <div className="mb-5">
                             <label
                                 htmlFor="email"
-                                className="block mb-2 text-sm font-medium text-white dark:text-white">
+                                className="block mb-2 text-md tracking-wide font-medium text-slate-600 dark:text-slate-200">
                                 Email
                             </label>
                             <input
-                                className="
-                                    text-sm 
-                                    block w-full p-2.5 rounded-lg 
-                                    focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500
-                                    bg-gray-700 border border-gray-600 placeholder-gray-400 text-white
-                                    dark:bg-gray-700 
-                                    dark:border-gray-600 
-                                    dark:placeholder-gray-400 
-                                    dark:text-white 
-                                    dark:focus:ring-blue-500 
-                                    dark:focus:border-blue-500"
+                                className=" 
+                                    block w-full p-2.5 rounded-lg text-sm
+                                    border hover:border-slate-400
+                                "
                                 type="email"
                                 name="email"
                                 value={email}
@@ -156,21 +172,14 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                         <div className="mb-5">
                             <label
                                 htmlFor="password"
-                                className="block mb-2 text-sm font-medium text-gray-900 text-white dark:text-white">
+                                className="block mb-2 text-md font-medium tracking-wide text-slate-600 dark:text-slate-200">
                                 Password
                             </label>
                             <input
                                 className="
-                                    text-sm 
-                                    block w-full p-2.5 rounded-lg 
-                                    focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500
-                                    bg-gray-700 border border-gray-600 placeholder-gray-400 text-white
-                                    dark:bg-gray-700 
-                                    dark:border-gray-600 
-                                    dark:placeholder-gray-400 
-                                    dark:text-white 
-                                    dark:focus:ring-blue-500 
-                                    dark:focus:border-blue-500"
+                                    block w-full p-2.5 rounded-lg text-sm
+                                    border hover:border-slate-400
+                                "
                                 type="password"
                                 name="password"
                                 value={password}
@@ -179,36 +188,17 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                                 required
                             />
                         </div>
-                        <div className="flex justify-between">
-                            <button
-                                type="submit"
-                                className="
-                                text-black 
-                                m-3
-                                focus:ring-4 focus:outline-none focus:ring-blue-300 focus:ring-green-800
-                                font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 
-                                bg-green-300 hover:bg-green-400 
-                                dark:bg-green-300 dark:hover:bg-green-400 
-                                dark:focus:ring-green-800">
-                                {formType == 'login'
-                                    ? 'Login'
-                                    : 'Create Account'}
-                            </button>
+                        <div className="flex flex-wrap justify-center">
                             <Link
                                 to={formType == 'login' ? '/signup' : '/login'}>
                                 <button
                                     className="
-                                    text-black 
-                                    bg-blue-400 
-                                    m-3
-                                    hover:bg-blue-500 
-                                    focus:ring-blue-600 
-                                    focus:ring-4 focus:outline-none focus:ring-pink-300 
-                                    font-medium 
-                                    rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center 
-                                    dark:bg-blue-400 
-                                    dark:hover:bg-blue-500 
-                                    dark:focus:ring-blue-600">
+                                        m-3 rounded-full text-sm xs:w-48 px-5 py-2.5
+                                        text-slate-600 dark:text-slate-200 font-medium tracking-wide
+                                        bg-transparent hover:bg-slate-200 dark:hover:bg-gray-600/50 
+                                        border border-slate-200 dark:border-slate-600 
+                                        transition-colors duration-500
+                                    ">
                                     {formType == 'login' ? (
                                         'Sign Up'
                                     ) : (
@@ -234,6 +224,20 @@ export const Form: React.FC<FormProps> = ({formType}) => {
                                     )}
                                 </button>
                             </Link>
+                            <button
+                                type="submit"
+                                className="
+                                    m-3 rounded-full xs:w-48 px-5 py-2.5 
+                                    text-white dark:text-slate-800 font-medium text-sm tracking-wide 
+                                    bg-primary hover:bg-primary-hover
+                                    dark:bg-dark-primary dark:hover:bg-dark-primary-hover
+                                    transition-colors duration-500
+                                "
+                            >
+                                {formType == 'login'
+                                    ? 'Login'
+                                    : 'Create Account'}
+                            </button>
                         </div>
                     </form>
                 </div>

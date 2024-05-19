@@ -14,7 +14,7 @@ module.exports = {
     },
     rules: {
         indent: ['error', 4, {SwitchCase: 1}],
-        'linebreak-style': ['error', 'windows'],
+        'linebreak-style': ['error', process.platform === 'win32' ? 'windows' : 'unix'],
         quotes: ['error', 'single', 'avoid-escape'],
         'no-unused-vars': 'off',
         '@typescript-eslint/no-unused-vars': [
