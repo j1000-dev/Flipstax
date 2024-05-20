@@ -98,7 +98,7 @@ export const Flashcards: React.FC = () => {
                                 dangerouslySetInnerHTML={{
                                     __html: fc.front_text
                                 }}
-                                className="tracking-tighter text-slate-900 dark:text-white md:text-lg"
+                                className="tracking-tighter text-slate-900 dark:text-white md:text-base"
                             />
                             <div className="flex items-center">
                                 <svg
@@ -138,7 +138,7 @@ export const Flashcards: React.FC = () => {
                             </div>
                         </div>
                         <p
-                            className="text-slate-500 dark:text-gray-400"
+                            className="text-slate-500 dark:text-gray-400 md:text-sm"
                             dangerouslySetInnerHTML={{ __html: fc.back_text }}
                         />
                     </div>

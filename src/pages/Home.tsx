@@ -11,9 +11,11 @@ import { usePractice } from '../context/practice-context';
 import { Practice } from './Practice';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { ThemeContext } from '../context/theme-context';
+import { auth } from '../firebase/firebase';
 
 const Home: React.FC = () => {
     const { signOut } = useContext(AuthContext);
+    const user  = auth.currentUser;
     const { practiceMode } = usePractice();
     const { deckId } = useParams();
     const [isAsideOpen, setIsAsideOpen] = useState<boolean>(true);
@@ -47,7 +49,7 @@ const Home: React.FC = () => {
                                 </svg>
                             </button>
                         )}
-                        <p className="mx-3">Welcome!</p>
+                        <p className="mx-3 font-medium"><strong>Logged in as:</strong> {user?.email}</p>
                     </div>
                     <div className="flex items-center">
                         <PrimaryButton content={'Sign Out'} onClick={signOut} />
