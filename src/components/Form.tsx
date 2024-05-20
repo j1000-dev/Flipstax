@@ -196,8 +196,8 @@ export const Form: React.FC<FormProps> = ({ formType }) => {
                                 type="submit"
                                 className="
                                     m-3 rounded-full xs:w-48 px-5 py-2.5 
-                                    text-white dark:text-slate-800 font-medium text-sm tracking-wide 
-                                    bg-primary hover:bg-primary-hover
+                                    text-slate-800 hover:text-white dark:text-slate-800 font-medium text-sm tracking-wide 
+                                    bg-primary hover:bg-primary-hover/50
                                     dark:bg-dark-primary dark:hover:bg-dark-primary-hover
                                     transition-colors duration-500
                                 "

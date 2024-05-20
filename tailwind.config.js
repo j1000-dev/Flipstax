@@ -9,8 +9,8 @@ module.exports = {
         'dark-mode': "url('/public/img/background-dark.jpg')",
       },
       colors: {
-        'primary': "#002aff",
-        'primary-hover': "#4800ff",
+        'primary': "#A7C7E7",
+        'primary-hover': "#5D3FD3",
         'dark-primary': '#7feaff',
         'dark-primary-hover': '#5f8cff'
       },

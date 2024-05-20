@@ -1,11 +1,12 @@
 import React from 'react';
-import { useState, ChangeEvent, useEffect } from 'react';
+import { useState, ChangeEvent, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useFlashcard } from '../context/flashcard-context';
 import { usePractice } from '../context/practice-context';
 import { PrimaryButton } from './PrimaryButton';
 import { Modal } from './Modal';
 import { SecondaryButton } from './SecondaryButton';
+import { ThemeContext } from '../context/theme-context';
 
 export const CreateFlashcard: React.FC = () => {
     const [openModal, setOpenModal] = useState<Boolean>(false);
@@ -16,7 +17,12 @@ export const CreateFlashcard: React.FC = () => {
     const { createFlashcard, deckName } = useFlashcard();
     const { setType, setMode, reviewType } = usePractice();
     const { deckId } = useParams();
+    const themeContext = useContext(ThemeContext);
 
+    if (!themeContext) {
+        throw new Error('themeContext must be used within a ThemeProvider');
+    }
+    const { theme } = themeContext;
     useEffect(() => {
         const fetchDeckName = async (): Promise<void> => {
             if (deckId) {
@@ -102,10 +108,8 @@ export const CreateFlashcard: React.FC = () => {
                 <button
                     onClick={(): void => setPracticeModal(true)}
                     type="button"
-                    className="text-black 
-                        bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 
-                        hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 
-                        dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+                    className={`${theme === 'dark' ? 'text-slate-600 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' :
+                        'text-slate-600 bg-gradient-to-r from-cyan-200 to-blue-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'}`}>
                     Practice
                 </button>
             </div>
