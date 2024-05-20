@@ -118,7 +118,7 @@ export const CreateFlashcard: React.FC = () => {
                             <div className="mb-5">
                                 <label
                                     htmlFor="frontText"
-                                    className="block my-2 text-sm font-medium text-white dark:text-white">
+                                    className="block my-2 text-sm font-medium text-slate-600 dark:text-white">
                                     Front
                                 </label>
                                 <textarea
@@ -134,7 +134,7 @@ export const CreateFlashcard: React.FC = () => {
                             <div className="mt-5">
                                 <label
                                     htmlFor="back"
-                                    className="block my-2 text-sm font-medium text-white dark:text-white">
+                                    className="block my-2 text-sm font-medium text-slate-600 dark:text-white">
                                     Back
                                 </label>
                                 <textarea
