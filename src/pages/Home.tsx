@@ -84,13 +84,13 @@ const Home: React.FC = () => {
                         )}
                     </div>
                 </aside>
-                <main className={`flex-1 p-4 transition-all duration-300 ${isAsideOpen ? 'md:ml-96' : 'md:ml-0'}`}>
+                <main className={'flex-1 p-4 transition-all duration-300'}>
                     {practiceMode ? (
                         <FlashcardProvider>
                             <Practice />
                         </FlashcardProvider>
                     ) : (
-                        <h1 className="text-center">No flashcards selected to practice.</h1>
+                        <h1 className="text-center">No flashcards selected to practice 😊</h1>
                     )}
                 </main>
             </div>
