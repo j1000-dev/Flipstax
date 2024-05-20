@@ -63,7 +63,7 @@ const Home: React.FC = () => {
             </div>
             <div className="md:flex">
                 <aside className={`md:w-96 md:h-screen bg-white dark:bg-[#131B2E] p-4 ${isAsideOpen ? '' : 'hidden md:block'
-                    }`}>
+                }`}>
                     <button
                         type="button"
                         onClick={handleToggleAside}

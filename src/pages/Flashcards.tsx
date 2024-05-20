@@ -104,9 +104,9 @@ export const Flashcards: React.FC = () => {
                                 <svg
                                     onClick={event => {
                                         event.stopPropagation(),
-                                            setDeleteModal(true),
-                                            setEditModal(false),
-                                            setSelectedFlashcard(fc.id);
+                                        setDeleteModal(true),
+                                        setEditModal(false),
+                                        setSelectedFlashcard(fc.id);
                                     }}
                                     className="w-6 h-6 text-slate-600 dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-300 dark:hover:text-blue-400"
                                     aria-hidden="true"
