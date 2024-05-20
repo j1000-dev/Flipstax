@@ -2,8 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-#root {
-    background-color: #111827;
+:root {
+    --bg-color: #F4F4FB; /* Default background color for light theme */
+    --text-color: #475569; /* Default text color for light theme */
+}  
+  
+.app {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.app.dark {
+    --bg-color: #111827; /* Background color for dark theme */
+    --text-color: #FFFFFF; /* Text color for dark theme */
 }
 
 .flip {

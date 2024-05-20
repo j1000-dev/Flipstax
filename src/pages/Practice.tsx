@@ -1,20 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import {useParams} from 'react-router-dom';
-import {usePractice} from '../context/practice-context';
-import {HeartIcon} from '../icons/HeartIcon';
-import {FilledHeartIcon} from '../icons/FilledHeartIcon';
-import {useFlashcard} from '../context/flashcard-context';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { usePractice } from '../context/practice-context';
+import { HeartIcon } from '../icons/HeartIcon';
+import { FilledHeartIcon } from '../icons/FilledHeartIcon';
+import { useFlashcard } from '../context/flashcard-context';
 
 export const Practice: React.FC = () => {
-    const {fetchFlashcards, flashcards, reviewType, shuffleFC, deckName} =
+    const { fetchFlashcards, flashcards, reviewType, shuffleFC, deckName } =
         usePractice();
-    const {editFlashcard} =
-    useFlashcard();
+    const { editFlashcard } =
+        useFlashcard();
     const [curIndex, setCurIndex] = useState<number>(0);
     const [showFront, setShowFront] = useState<boolean>(true);
     const [isFlipped, setIsFlipped] = useState<boolean>(false);
     const [deck, setDeck] = useState<string>('');
-    const {deckId} = useParams();
+    const { deckId } = useParams();
 
     useEffect(() => {
         fetchFlashcards();
@@ -63,7 +63,7 @@ export const Practice: React.FC = () => {
     ): Promise<void> => {
         event.stopPropagation();
         if (deckId) {
-            editFlashcard(deckId, flashcardId, {favorited: !favorited});
+            editFlashcard(deckId, flashcardId, { favorited: !favorited });
         }
     };
 
@@ -78,7 +78,7 @@ export const Practice: React.FC = () => {
             {flashcards.length > 0 && (
                 <>
                     <div className="flex items-center justify-center m-3">
-                        <p className="tracking-wider text-gray-400 md:text-lg capitalize dark:text-gray-400">
+                        <p className="tracking-wider text-slate-600 md:text-lg capitalize dark:text-gray-400">
                             {reviewType} flashcards: {deck}
                         </p>
                         <svg
@@ -86,7 +86,7 @@ export const Practice: React.FC = () => {
                                 shuffleFC();
                                 setCurIndex(0);
                             }}
-                            className="cursor-pointer w-6 h-6 text-white dark:text-white mx-5"
+                            className="cursor-pointer w-6 h-6 dark:text-slate-600 dark:text-white mx-5"
                             aria-hidden="true"
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -101,18 +101,36 @@ export const Practice: React.FC = () => {
                         </svg>
                     </div>
                     <div className="flex flex-col justify-center my-5">
-                        <p className="text-center tracking-tight text-gray-400 md:text-lg dark:text-gray-400">
+                        <p className="text-center tracking-tight text-gray-600 md:text-lg dark:text-gray-400">
                             {curIndex + 1} of {flashcards.length} flashcards
                         </p>
                         <div className="flex justify-center mt-4">
                             <button
                                 onClick={() => handleClick('prev')}
-                                className="mx-2 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+                                className="
+                                    px-5 py-2.5 m-2
+                                    text-slate-600 dark:text-white 
+                                    bg-slate-200 dark:bg-gray-800 
+                                    hover:bg-slate-300 dark:hover:bg-gray-600
+                                    focus:outline-none font-medium 
+                                    border border-slate-300 dark:border-gray-600
+                                    rounded-lg text-sm
+                                "
+                            >
                                 Prev
                             </button>
                             <button
                                 onClick={() => handleClick('next')}
-                                className="mx-2 text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700">
+                                className="
+                                    px-5 py-2.5 m-2
+                                    text-slate-600 dark:text-white 
+                                    bg-slate-200 dark:bg-gray-800 
+                                    hover:bg-slate-300 dark:hover:bg-gray-600 
+                                    focus:outline-none font-medium 
+                                    border border-slate-300 dark:border-gray-600
+                                    rounded-lg text-sm
+                                "
+                            >
                                 Next
                             </button>
                         </div>
@@ -121,10 +139,10 @@ export const Practice: React.FC = () => {
                         <div
                             className={`
                             max-w-screen text-center p-6 rounded-lg shadow
-                            bg-gray-800 border border-gray-700
+                            bg-slate-200 border border-gray-300
                             dark:bg-gray-800 dark:border-gray-700 ${isFlipped ? 'flip flip-card' : 'flip'}`}
-                            style={{height: '400px', width: '700px'}}>
-                            <div className={`tracking-normal text-center text-gray-400 md:text-lg dark:text-gray-400 ${isFlipped ? 'flip-card-back' : ''}`}>
+                            style={{ height: '400px', width: '700px' }}>
+                            <div className={`tracking-normal text-center text-slate-600 md:text-lg dark:text-gray-400 ${isFlipped ? 'flip-card-back' : ''}`}>
                                 {showFront == true ? (
                                     <div className="grid grid-cols-3">
                                         <p className="text-center col-start-2">Front</p>
@@ -151,7 +169,7 @@ export const Practice: React.FC = () => {
                             <div className="flex justify-center items-center h-full">
                                 {showFront === true ? (
                                     <p
-                                        className={`text-white text-xl dark:text-white ${isFlipped ? 'flip-card-back' : ''}`}
+                                        className={`text-slate-600 text-xl dark:text-white ${isFlipped ? 'flip-card-back' : ''}`}
                                         dangerouslySetInnerHTML={{
                                             __html: flashcards[curIndex]
                                                 .front_text
@@ -159,7 +177,7 @@ export const Practice: React.FC = () => {
                                     />
                                 ) : (
                                     <p
-                                        className={`text-white text-xl dark:text-white ${isFlipped ? 'flip-card-back' : ''}`}
+                                        className={`text-slate-600 text-xl dark:text-white ${isFlipped ? 'flip-card-back' : ''}`}
                                         dangerouslySetInnerHTML={{
                                             __html: flashcards[curIndex]
                                                 .back_text

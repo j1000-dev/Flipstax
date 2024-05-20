@@ -10,6 +10,7 @@ import { Flashcards } from './Flashcards';
 import { usePractice } from '../context/practice-context';
 import { Practice } from './Practice';
 import { PrimaryButton } from '../components/PrimaryButton';
+import { ThemeContext } from '../context/theme-context';
 
 const Home: React.FC = () => {
     const { signOut } = useContext(AuthContext);
@@ -17,14 +18,21 @@ const Home: React.FC = () => {
     const { deckId } = useParams();
     const [isAsideOpen, setIsAsideOpen] = useState<boolean>(true);
     const isDeckRoute = deckId !== undefined;
+    const themeContext = useContext(ThemeContext);
+
+    if (!themeContext) {
+        throw new Error('themeContext must be used within a ThemeProvider');
+    }
+
+    const { toggleTheme } = themeContext;
 
     const handleToggleAside = (): void => {
         setIsAsideOpen((prevIsAsideOpen) => !prevIsAsideOpen);
     };
 
     return (
-        <div className="min-h-screen text-white">
-            <div className="bg-gray-600 px-3 sticky top-0 z-10">
+        <div className="h-screen sticky top-0 z-20 inset-x-0 text-slate-600 dark:text-white">
+            <div className="bg-slate-300 dark:bg-gray-600 px-3">
                 <div className="max-w-full flex items-center justify-between">
                     <div className="flex items-center justify-center">
                         {
@@ -32,20 +40,30 @@ const Home: React.FC = () => {
                                 <button onClick={handleToggleAside} className="p-2 text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">
                                     <svg
                                         className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                                        <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h14"/>
+                                        <path stroke="currentColor" strokeLinecap="round" strokeWidth="2" d="M5 7h14M5 12h14M5 17h14" />
                                     </svg>
                                 </button>
                             )
                         }
                         <p className="mx-3">Welcome!</p>
                     </div>
-                    <PrimaryButton content={'Sign Out'} onClick={signOut} />
+                    <div className="flex flex-row items-center">
+                        <PrimaryButton content={'Sign Out'} onClick={signOut} />
+                        <button
+                            onClick={toggleTheme}
+                            className="
+                                px-4 py-2 rounded
+                                bg-gray-200 dark:bg-gray-800 text-slate-600 dark:text-white
+                            "
+                        >
+                            <i className="fa-solid fa-circle-half-stroke"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div className="md:flex">
-                <aside className={`md:w-96 md:h-screen bg-[#131B2E] p-4 ${
-                    isAsideOpen ? '' : 'hidden md:block'
-                }`}>
+                <aside className={`md:w-96 md:h-screen bg-white dark:bg-[#131B2E] p-4 ${isAsideOpen ? '' : 'hidden md:block'
+                    }`}>
                     <button
                         type="button"
                         onClick={handleToggleAside}
@@ -66,7 +84,7 @@ const Home: React.FC = () => {
                         </svg>
                         <span className="sr-only">Toggle menu</span>
                     </button>
-                    <div className="overflow-y-auto max-h-screen" style={{height: '95%'}}>
+                    <div className="overflow-y-auto max-h-screen" style={{ height: '95%' }}>
                         {isDeckRoute ? (
                             <FlashcardProvider>
                                 <CreateFlashcard />

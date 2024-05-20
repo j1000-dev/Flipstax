@@ -1,18 +1,18 @@
-import React, {useState, ChangeEvent} from 'react';
-import {useDeck} from '../context/deck-context';
-import {useNavigate} from 'react-router-dom';
-import {Modal} from '../components/Modal';
-import {SecondaryButton} from '../components/SecondaryButton';
-import {PrimaryButton} from '../components/PrimaryButton';
+import React, { useState, ChangeEvent } from 'react';
+import { useDeck } from '../context/deck-context';
+import { useNavigate } from 'react-router-dom';
+import { Modal } from '../components/Modal';
+import { SecondaryButton } from '../components/SecondaryButton';
+import { PrimaryButton } from '../components/PrimaryButton';
 
 export const Decks: React.FC = () => {
-    const {decks} = useDeck();
+    const { decks } = useDeck();
     const navigate = useNavigate();
     const [deckName, setDeckName] = useState<string>('');
     const [editModal, setEditModal] = useState<Boolean>(false);
     const [deleteModal, setDeleteModal] = useState<Boolean>(false);
     const [deckId, setDeckId] = useState<string>('');
-    const {editDeck, deleteDeck} = useDeck();
+    const { editDeck, deleteDeck } = useDeck();
 
     const handleDeckClick = (
         deckName: string,
@@ -63,7 +63,7 @@ export const Decks: React.FC = () => {
     };
 
     return (
-        <div className="overflow-y-auto" style={{height: '80%'}}>
+        <div className="overflow-y-auto" style={{ height: '80%' }}>
             {decks.map(deck => (
                 <div
                     className="cursor-pointer py-3 mx-2"
@@ -73,16 +73,15 @@ export const Decks: React.FC = () => {
                     }>
                     <div
                         className="
-                        text-white 
                         block rounded-lg shadow
                         max-w-sm p-4 
-                        bg-gray-800 border-gray-700 hover:bg-gray-700 
+                        bg-slate-50 border-slate-300 hover:bg-slate-100 
                         dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-                        <p className="tracking-tighter text-white dark:text-white md:text-lg">
+                        <p className="tracking-tighter text-slate-900 dark:text-white md:text-lg">
                             {deck.name}
                         </p>
                         <div className="flex items-center justify-between">
-                            <p className="text-gray-400 dark:text-gray-400">
+                            <p className="text-slate-600 dark:text-gray-400">
                                 {deck.flashcardCount} flashcards
                             </p>
                             <div className="flex items-center justify-between">
@@ -95,7 +94,7 @@ export const Decks: React.FC = () => {
                                             event
                                         )
                                     }
-                                    className="w-6 h-6 text-white dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-400"
+                                    className="w-6 h-6 text-slate-600 dark:text-white transition-colors duration-200 ease-in-out hover:text-blue-300 dark:hover:text-blue-400"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -117,7 +116,7 @@ export const Decks: React.FC = () => {
                                             event
                                         )
                                     }
-                                    className="ml-2 w-7 h-7 text-white dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-400"
+                                    className="ml-2 w-7 h-7 text-slate-600 dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-300 dark:hover:text-blue-400"
                                     aria-hidden="true"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -148,7 +147,7 @@ export const Decks: React.FC = () => {
                             </label>
                             <input
                                 className="
-                                    bg-gray-700 border border-gray-600 text-white placeholder-gray-400
+                                    bg-slate-400 border border-gray-600 text-white placeholder-gray-400
                                     dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white
                                     text-sm rounded-lg block w-full p-2.5 
                                     focus:ring focus:outline-none focus focus:ring-blue-500 focus:border-blue-500 

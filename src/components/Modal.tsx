@@ -1,4 +1,4 @@
-import React, {ReactNode, MouseEvent} from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 
 interface ModalProps {
     title: string;
@@ -7,7 +7,7 @@ interface ModalProps {
     onClose?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const Modal: React.FC<ModalProps> = ({title, body, footer, onClose}) => {
+export const Modal: React.FC<ModalProps> = ({ title, body, footer, onClose }) => {
     return (
         <div
             id="default-modal"
@@ -16,10 +16,10 @@ export const Modal: React.FC<ModalProps> = ({title, body, footer, onClose}) => {
             className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md md:max-w-2xl max-h-full overflow-y-auto">
             <div className="relative p-4 w-full max-h-full">
                 {/* Modal content */}
-                <div className="relative bg-gray-700 dark:bg-gray-700 rounded-lg shadow">
+                <div className="relative bg-slate-200 dark:bg-gray-700 rounded-lg shadow">
                     {/* Modal header */}
-                    <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-600 dark:border-gray-600">
-                        <h3 className="text-xl text-white dark:text-white">
+                    <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-slate-300 dark:border-gray-600">
+                        <h3 className="text-xl text-slate-600 dark:text-white">
                             {title}
                         </h3>
                         <button
@@ -47,7 +47,7 @@ export const Modal: React.FC<ModalProps> = ({title, body, footer, onClose}) => {
                     {/* Modal body */}
                     <div className="p-4 md:p-5 space-y-4">{body}</div>
                     {/* Modal footer */}
-                    <div className="flex justify-end items-center p-4 md:p-5 border-t border-gray-600 rounded-b dark:border-gray-600">
+                    <div className="flex justify-end items-center p-4 md:p-5 border-t border-slate-300 rounded-b dark:border-gray-600">
                         {footer}
                     </div>
                 </div>

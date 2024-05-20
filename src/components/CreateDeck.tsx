@@ -1,13 +1,13 @@
-import React, {useState, ChangeEvent} from 'react';
-import {useDeck} from '../context/deck-context';
-import {PrimaryButton} from './PrimaryButton';
-import {SecondaryButton} from './SecondaryButton';
-import {Modal} from './Modal';
+import React, { useState, ChangeEvent } from 'react';
+import { useDeck } from '../context/deck-context';
+import { PrimaryButton } from './PrimaryButton';
+import { SecondaryButton } from './SecondaryButton';
+import { Modal } from './Modal';
 
 export const CreateDeck: React.FC = () => {
     const [openModal, setOpenModal] = useState<Boolean>(false);
     const [deckName, setDeckName] = useState<string>('');
-    const {createDeck} = useDeck();
+    const { createDeck } = useDeck();
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>): void => {
         setDeckName(event.target.value);
@@ -29,7 +29,7 @@ export const CreateDeck: React.FC = () => {
     return (
         <div className="mb-5">
             <div className="flex justify-between items-center">
-                <p className="tracking-wide text-gray-300 md:text-lg dark:text-gray-300">
+                <p className="tracking-wide text-slate-600 md:text-lg dark:text-gray-300">
                     Decks
                 </p>
                 <PrimaryButton
@@ -45,21 +45,15 @@ export const CreateDeck: React.FC = () => {
                         <div className="mb-5">
                             <label
                                 htmlFor="deckName"
-                                className="block mb-2 text-sm font-normal text-white dark:text-white">
+                                className="block mb-2 text-sm font-normal text-slate-600 dark:text-white">
                                 Deck name
                             </label>
                             <input
                                 className="
-                                    text-sm 
-                                    block w-full p-2.5 rounded-lg 
-                                    focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500
-                                    bg-gray-700 border border-gray-600 placeholder-gray-400 text-white
-                                    dark:bg-gray-700 
-                                    dark:border-gray-600 
-                                    dark:placeholder-gray-400 
-                                    dark:text-white 
-                                    dark:focus:ring-blue-500 
-                                    dark:focus:border-blue-500
+                                    text-slate-600 dark:text-slate-200
+                                    block w-full p-2.5 rounded-lg text-sm
+                                    border hover:border-slate-400
+                                    dark:bg-slate-600 dark:border-slate-600 dark:hover:border-slate-400
                                 "
                                 type="deckName"
                                 name="deckName"

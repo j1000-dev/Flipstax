@@ -1,11 +1,11 @@
 import React from 'react';
-import {useState, ChangeEvent, useEffect} from 'react';
-import {useParams, Link} from 'react-router-dom';
-import {useFlashcard} from '../context/flashcard-context';
-import {usePractice} from '../context/practice-context';
-import {PrimaryButton} from './PrimaryButton';
-import {Modal} from './Modal';
-import {SecondaryButton} from './SecondaryButton';
+import { useState, ChangeEvent, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { useFlashcard } from '../context/flashcard-context';
+import { usePractice } from '../context/practice-context';
+import { PrimaryButton } from './PrimaryButton';
+import { Modal } from './Modal';
+import { SecondaryButton } from './SecondaryButton';
 
 export const CreateFlashcard: React.FC = () => {
     const [openModal, setOpenModal] = useState<Boolean>(false);
@@ -13,9 +13,9 @@ export const CreateFlashcard: React.FC = () => {
     const [deck, setDeck] = useState<string>('');
     const [frontText, setFrontText] = useState<string>('');
     const [backText, setBackText] = useState<string>('');
-    const {createFlashcard, deckName} = useFlashcard();
-    const {setType, setMode, reviewType} = usePractice();
-    const {deckId} = useParams();
+    const { createFlashcard, deckName } = useFlashcard();
+    const { setType, setMode, reviewType } = usePractice();
+    const { deckId } = useParams();
 
     useEffect(() => {
         const fetchDeckName = async (): Promise<void> => {
@@ -97,7 +97,7 @@ export const CreateFlashcard: React.FC = () => {
                     onClick={(): void => setOpenModal(true)}
                 />
             </div>
-            <hr className="h-px my-4 bg-gray-700 border-0 dark:bg-gray-700"></hr>
+            <hr className="h-px my-4 bg-gray-300 border-0 dark:bg-gray-700"></hr>
             <div className="flex items-center justify-center">
                 <button
                     onClick={(): void => setPracticeModal(true)}
@@ -127,7 +127,7 @@ export const CreateFlashcard: React.FC = () => {
                                     id="frontText"
                                     name="frontText"
                                     rows={5}
-                                    style={{whiteSpace: 'pre-line'}}
+                                    style={{ whiteSpace: 'pre-line' }}
                                     className="block p-2.5 w-full text-sm text-gray-900 rounded border focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-500"
                                     placeholder="Add a term to remember or a question to answer."></textarea>
                             </div>
@@ -168,7 +168,7 @@ export const CreateFlashcard: React.FC = () => {
                     onClose={() => setPracticeModal(false)}
                     body={
                         <>
-                            <p className="text-white">
+                            <p className="text-slate-600 dark:text-white">
                                 Pick the items you would like to review
                             </p>
                             <div className="flex items-center mb-4">
@@ -182,7 +182,7 @@ export const CreateFlashcard: React.FC = () => {
                                 />
                                 <label
                                     htmlFor="review-option-all"
-                                    className="block ms-2 text-sm font-medium text-gray-300 dark:text-gray-300">
+                                    className="block ms-2 text-sm font-medium text-slate-500 dark:text-gray-300">
                                     All items
                                 </label>
                             </div>
@@ -197,7 +197,7 @@ export const CreateFlashcard: React.FC = () => {
                                 />
                                 <label
                                     htmlFor="review-option-favorite"
-                                    className="block ms-2 text-sm font-medium text-gray-300 dark:text-gray-300">
+                                    className="block ms-2 text-sm font-medium text-slate-500 dark:text-gray-300">
                                     Favorites only
                                 </label>
                             </div>

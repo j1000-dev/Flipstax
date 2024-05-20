@@ -1,4 +1,4 @@
-import React, {ReactNode, MouseEvent} from 'react';
+import React, { ReactNode, MouseEvent } from 'react';
 
 interface PrimaryButtonProps {
     content: ReactNode;
@@ -14,13 +14,12 @@ export const PrimaryButton: React.FC<PrimaryButtonProps> = ({
             type="submit"
             onClick={onClick}
             className="
-            text-black 
-            m-3
-            focus:ring-4 focus:outline-none focus:ring-blue-300 focus:ring-green-800
-            font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 
-            bg-green-300 hover:bg-green-400 
-            dark:bg-green-300 dark:hover:bg-green-400 
-            dark:focus:ring-green-800">
+                m-3 rounded-lg sm:w-auto px-5 py-2.5 
+                text-white dark:text-slate-800 font-medium text-sm tracking-wide 
+                bg-primary hover:bg-primary-hover
+                dark:bg-dark-primary dark:hover:bg-dark-primary-hover
+                transition-colors duration-500
+            ">
             {content}
         </button>
     );
