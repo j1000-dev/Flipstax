@@ -1,5 +1,4 @@
-import React, { useContext } from 'react';
-import { ChangeEvent, FormEvent, useState } from 'react';
+import React, { useContext, useState, ChangeEvent, FormEvent } from 'react';
 import { signInUser, auth, db } from '../firebase/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
@@ -90,7 +89,7 @@ export const Form: React.FC<FormProps> = ({ formType }) => {
             </button>
             <div className="
                     p-6 rounded-lg shadow w-full max-w-lg
-                    bg-slate-50/50 dark:bg-gray-700/50 border border-slate-50 dark:border-gray-700
+                    bg-slate-50/50 dark:bg-gray-700/50 border border-slate-200 dark:border-gray-700
                 "
             >
                 {errorMessage !== '' && (
@@ -149,8 +148,7 @@ export const Form: React.FC<FormProps> = ({ formType }) => {
                     </div>
                 )}
                 <div className="card">
-                    <form
-                        onSubmit={ formType === 'login' ? handleLogin : handleSignUp }>
+                    <form onSubmit={formType === 'login' ? handleLogin : handleSignUp}>
                         <div className="mb-5">
                             <label
                                 htmlFor="email"
@@ -159,8 +157,10 @@ export const Form: React.FC<FormProps> = ({ formType }) => {
                             </label>
                             <input
                                 className=" 
+                                    text-slate-600 dark:text-slate-200
                                     block w-full p-2.5 rounded-lg text-sm
                                     border hover:border-slate-400
+                                    dark:bg-slate-600 dark:border-slate-600 dark:hover:border-slate-400
                                 "
                                 type="email"
                                 name="email"
@@ -178,8 +178,10 @@ export const Form: React.FC<FormProps> = ({ formType }) => {
                             </label>
                             <input
                                 className="
+                                    text-slate-600 dark:text-slate-200
                                     block w-full p-2.5 rounded-lg text-sm
                                     border hover:border-slate-400
+                                    dark:bg-slate-600 dark:border-slate-600 dark:hover:border-slate-400
                                 "
                                 type="password"
                                 name="password"
@@ -190,41 +192,6 @@ export const Form: React.FC<FormProps> = ({ formType }) => {
                             />
                         </div>
                         <div className="flex flex-wrap justify-center">
-                            <Link
-                                to={formType == 'login' ? '/signup' : '/login'}>
-                                <button
-                                    className="
-                                        m-3 rounded-full text-sm xs:w-48 px-5 py-2.5
-                                        text-slate-600 dark:text-slate-200 font-medium tracking-wide
-                                        bg-transparent hover:bg-slate-200 dark:hover:bg-gray-600/50 
-                                        border border-slate-200 dark:border-slate-600 
-                                        transition-colors duration-500
-                                    ">
-                                    {formType == 'login' ? (
-                                        'Sign Up'
-                                    ) : (
-                                        <div className="flex items-center">
-                                            <svg
-                                                className="rotate-180 w-3.5 h-3.5 ms-2"
-                                                aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                fill="none"
-                                                viewBox="0 0 14 10">
-                                                <path
-                                                    stroke="currentColor"
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                                                />
-                                            </svg>
-                                            <span className="ml-2">
-                                                Back to Login
-                                            </span>
-                                        </div>
-                                    )}
-                                </button>
-                            </Link>
                             <button
                                 type="submit"
                                 className="
@@ -235,12 +202,44 @@ export const Form: React.FC<FormProps> = ({ formType }) => {
                                     transition-colors duration-500
                                 "
                             >
-                                {formType == 'login'
-                                    ? 'Login'
-                                    : 'Create Account'}
+                                {formType === 'login' ? 'Login' : 'Create Account'}
                             </button>
                         </div>
                     </form>
+                    <div className="flex justify-center">
+                        <Link to={formType === 'login' ? '/signup' : '/login'}>
+                            <button
+                                className="
+                                    m-3 rounded-full text-sm xs:w-48 px-5 py-2.5
+                                    text-slate-600 dark:text-slate-200 font-medium tracking-wide
+                                    bg-transparent hover:bg-slate-200 dark:hover:bg-gray-600/50 
+                                    border border-slate-300 dark:border-slate-600 
+                                    transition-colors duration-500
+                                ">
+                                {formType === 'login' ? 'Sign Up' : (
+                                    <div className="flex items-center">
+                                        <svg
+                                            className="rotate-180 w-3.5 h-3.5 ms-2"
+                                            aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            fill="none"
+                                            viewBox="0 0 14 10">
+                                            <path
+                                                stroke="currentColor"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth="2"
+                                                d="M1 5h12m0 0L9 1m4 4L9 9"
+                                            />
+                                        </svg>
+                                        <span className="ml-2">
+                                            Back to Login
+                                        </span>
+                                    </div>
+                                )}
+                            </button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>
