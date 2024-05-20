@@ -70,7 +70,7 @@ export const Practice: React.FC = () => {
 
     // Check if flashcards array is not empty before rendering
     if (flashcards.length === 0) {
-        return <p>No flashcards selected to practice.</p>; // or any loading indicator
+        return <p className="text-center">No flashcards selected to practice 😊</p>; // or any loading indicator
     }
 
     return (
@@ -120,6 +120,15 @@ export const Practice: React.FC = () => {
                                 Prev
                             </button>
                             <button
+                                type="button"
+                                className="text-black 
+                                    bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 
+                                    hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 
+                                    font-medium rounded-lg text-sm px-5 py-2.5 m-2 text-center"
+                                onClick={() => handleFlip()}>
+                                Flip
+                            </button>
+                            <button
                                 onClick={() => handleClick('next')}
                                 className="
                                     px-5 py-2.5 m-2
@@ -139,13 +148,13 @@ export const Practice: React.FC = () => {
                         <div
                             className={`
                             max-w-screen text-center p-6 rounded-lg shadow
-                            bg-slate-200 border border-gray-300
+                            bg-slate-100 border border-gray-200
                             dark:bg-gray-800 dark:border-gray-700 ${isFlipped ? 'flip flip-card' : 'flip'}`}
-                            style={{ height: '400px', width: '700px' }}>
-                            <div className={`tracking-normal text-center text-slate-600 md:text-lg dark:text-gray-400 ${isFlipped ? 'flip-card-back' : ''}`}>
+                            style={{ height: '400px', width: '80%' }}>
+                            <div className={`py-3 tracking-normal text-center text-slate-600 md:text-lg dark:text-gray-400 ${isFlipped ? 'flip-card-back' : ''}`}>
                                 {showFront == true ? (
                                     <div className="grid grid-cols-3">
-                                        <p className="text-center col-start-2">Front</p>
+                                        <p className="text-center col-start-2 text-xl font-bold">Front</p>
                                         <div className="flex justify-end col-start-3 cursor-pointer"
                                             onClick={event =>
                                                 favoriteFlashcard(
@@ -163,13 +172,13 @@ export const Practice: React.FC = () => {
                                         </div>
                                     </div>
                                 ) : (
-                                    'Back'
+                                    <p className='text-xl font-bold'>Back</p>
                                 )}
                             </div>
-                            <div className="flex justify-center items-center h-full">
+                            <div className="flex justify-center items-center overflow-y-auto" style={{height: 'calc(100vh - 450px)'}}>
                                 {showFront === true ? (
                                     <p
-                                        className={`text-slate-600 text-xl dark:text-white ${isFlipped ? 'flip-card-back' : ''}`}
+                                        className={`text-slate-600 text-lg dark:text-white h-full ${isFlipped ? 'flip-card-back' : ''}`}
                                         dangerouslySetInnerHTML={{
                                             __html: flashcards[curIndex]
                                                 .front_text
@@ -177,7 +186,7 @@ export const Practice: React.FC = () => {
                                     />
                                 ) : (
                                     <p
-                                        className={`text-slate-600 text-xl dark:text-white ${isFlipped ? 'flip-card-back' : ''}`}
+                                        className={`text-slate-600 text-lg dark:text-white h-full ${isFlipped ? 'flip-card-back' : ''}`}
                                         dangerouslySetInnerHTML={{
                                             __html: flashcards[curIndex]
                                                 .back_text
@@ -186,12 +195,6 @@ export const Practice: React.FC = () => {
                                 )}
                             </div>
                         </div>
-                        <button
-                            type="button"
-                            className="my-5 text-black bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                            onClick={() => handleFlip()}>
-                            Flip
-                        </button>
                     </div>
                 </>
             )}
