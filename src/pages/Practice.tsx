@@ -160,19 +160,24 @@ export const Practice: React.FC = () => {
                                 {showFront == true ? (
                                     <div className="grid grid-cols-3">
                                         <p className="text-center col-start-2 text-xl font-bold">Front</p>
-                                        <div className="flex justify-end col-start-3 cursor-pointer"
-                                            onClick={event =>
-                                                favoriteFlashcard(
-                                                    flashcards[curIndex].id,
-                                                    flashcards[curIndex].favorited,
-                                                    event
-                                                )
-                                            }
+                                        <div className="flex justify-end col-start-3"
                                         >
                                             {flashcards[curIndex].favorited == true ? (
-                                                <FilledHeartIcon />
+                                                <span className="cursor-pointer" onClick={event =>
+                                                    favoriteFlashcard(
+                                                        flashcards[curIndex].id,
+                                                        flashcards[curIndex].favorited,
+                                                        event
+                                                    )
+                                                }><FilledHeartIcon /></span>
                                             ) : (
-                                                <HeartIcon />
+                                                <span className="cursor-pointer" onClick={event =>
+                                                    favoriteFlashcard(
+                                                        flashcards[curIndex].id,
+                                                        flashcards[curIndex].favorited,
+                                                        event
+                                                    )
+                                                }><HeartIcon /></span>
                                             )}
                                         </div>
                                     </div>
