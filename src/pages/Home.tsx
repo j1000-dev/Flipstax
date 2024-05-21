@@ -11,11 +11,9 @@ import { usePractice } from '../context/practice-context';
 import { Practice } from './Practice';
 import { PrimaryButton } from '../components/PrimaryButton';
 import { ThemeContext } from '../context/theme-context';
-import { auth } from '../firebase/firebase';
 
 const Home: React.FC = () => {
     const { signOut } = useContext(AuthContext);
-    const user  = auth.currentUser;
     const { practiceMode } = usePractice();
     const { deckId } = useParams();
     const [isAsideOpen, setIsAsideOpen] = useState<boolean>(true);
@@ -37,7 +35,7 @@ const Home: React.FC = () => {
 
     return (
         <div className="flex flex-col text-slate-600 dark:text-white" style={{ height: '100vh' }}>
-            <div className="bg-slate-300 dark:bg-gray-600 px-3">
+            <div className="bg-slate-300 dark:bg-gray-600 px-3 py-2">
                 <div className="max-w-full flex items-center justify-between">
                     <div className="flex items-center">
                         {!isAsideOpen && (
@@ -49,9 +47,9 @@ const Home: React.FC = () => {
                                 </svg>
                             </button>
                         )}
-                        <p className="mx-3 font-medium"><strong>Logged in as:</strong> {user?.email}</p>
+                        <p className="mx-3 font-medium"><strong>Welcome!</strong></p>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex flex-row items-center justify-center flex-wrap">
                         <PrimaryButton content={'Sign Out'} onClick={signOut} />
                         <button
                             onClick={toggleTheme}
