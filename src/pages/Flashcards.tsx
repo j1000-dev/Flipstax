@@ -104,9 +104,9 @@ export const Flashcards: React.FC = () => {
                                 <svg
                                     onClick={event => {
                                         event.stopPropagation(),
-                                        setDeleteModal(true),
-                                        setEditModal(false),
-                                        setSelectedFlashcard(fc.id);
+                                            setDeleteModal(true),
+                                            setEditModal(false),
+                                            setSelectedFlashcard(fc.id);
                                     }}
                                     className="w-6 h-6 text-slate-600 dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-300 dark:hover:text-blue-400"
                                     aria-hidden="true"
@@ -196,7 +196,7 @@ export const Flashcards: React.FC = () => {
                     title="Delete your flashcard"
                     onClose={() => setDeleteModal(false)}
                     body={
-                        <p className="text-base leading-relaxed text-gray-400 dark:text-gray-400">
+                        <p className="text-base leading-relaxed text-slate-600 dark:text-gray-400">
                             Are you sure you want to delete this flashcard?
                         </p>
                     }

@@ -174,7 +174,7 @@ export const Decks: React.FC = () => {
                     title="Delete your deck"
                     onClose={() => setDeleteModal(false)}
                     body={
-                        <p className="text-base leading-relaxed text-gray-400 dark:text-gray-400">
+                        <p className="text-base leading-relaxed text-slate-600 dark:text-gray-400">
                             Are you sure you want to delete this deck?
                         </p>
                     }
