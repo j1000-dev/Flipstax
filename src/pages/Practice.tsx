@@ -215,7 +215,7 @@ export const Practice: React.FC = () => {
                                             <svg
                                                 onClick={event => {
                                                     event.stopPropagation(),
-                                                        setDeleteModal(false)
+                                                    setDeleteModal(false)
                                                     setEditModal(true)
                                                     handleEditClick(flashcards[curIndex].id);
                                                 }}
@@ -234,9 +234,9 @@ export const Practice: React.FC = () => {
                                             <svg
                                                 onClick={event => {
                                                     event.stopPropagation(),
-                                                        setDeleteModal(true),
-                                                        setEditModal(false),
-                                                        setSelectedFlashcard(flashcards[curIndex].id);
+                                                    setDeleteModal(true),
+                                                    setEditModal(false),
+                                                    setSelectedFlashcard(flashcards[curIndex].id);
                                                 }}
                                                 className="w-6 h-6 cursor-pointer text-slate-600 dark:text-white transition-colors duration-300 ease-in-out hover:text-blue-300 dark:hover:text-blue-400"
                                                 aria-hidden="true"
